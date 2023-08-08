@@ -7,10 +7,7 @@
             "driver": "PostgreSQL",
             "database": "proyecto_final",
             "username": "postgres",
-            "name": "Proyecto"
-            "name": "final",
-            "database": "proyecto_final",
-            "username": "postgres"
+            "name": "final"
         }
     ]
 }
