@@ -5,9 +5,9 @@
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
-            "database": "proyecto_final",
-            "username": "postgres",
-            "name": "final"
+            "name": "ProyectoFinal",
+            "database": "ProyectoFinal",
+            "username": "postgres"
         }
     ]
 }
