@@ -1,15 +1,24 @@
 import { useState } from 'react'
 import matchScreen from './components/matchScreen'
 import './App.css'
+import React from 'react';
+import Home from './views/Home';
 
 function App() {
   const [count, setCount] = useState(0)
+import React from 'react';
+import Home from './views/Home';
 
+const App = () => {
   return (
     <>
-      <matchScreen></matchScreen>
-    </>
-  )
-}
+      <matchScreen />
 
-export default App
+      <div className="app">
+        <Home />
+      </div>
+    </>
+  );
+};
+
+export default App;
