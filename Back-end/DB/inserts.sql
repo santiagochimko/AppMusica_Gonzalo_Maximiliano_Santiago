@@ -207,3 +207,17 @@ VALUES
     (98, 10, 24, 'Pop/Rock', 'Adventure of a Lifetime'),
     (99, 10, 23, 'Pop/Rock', 'Yellow'),
     (100, 10, 23, 'Pop/Rock', 'In My Place');
+
+--@block
+-- Asignar ocasión, clima y estado de ánimo a cada canción en la tabla "canciones"
+UPDATE "canciones" SET "Ocasion" = 'Ejercicio fisico', "Clima" = 'Soleado', "EstadoDeAnimo" = 'Motivado' WHERE "Cancion_id" IN (1, 6, 11, 16, 21, 26, 31, 36, 41, 46);
+UPDATE "canciones" SET "Ocasion" = 'Limpieza', "Clima" = 'Nublado', "EstadoDeAnimo" = 'Relajado' WHERE "Cancion_id" IN (2, 7, 12, 17, 22, 27, 32, 37, 42, 47);
+UPDATE "canciones" SET "Ocasion" = 'Celebracion', "Clima" = 'Despejado', "EstadoDeAnimo" = 'Feliz' WHERE "Cancion_id" IN (3, 8, 13, 18, 23, 28, 33, 38, 43, 48);
+UPDATE "canciones" SET "Ocasion" = 'Dormir', "Clima" = 'Lluvioso', "EstadoDeAnimo" = 'Tranquilo' WHERE "Cancion_id" IN (4, 9, 14, 19, 24, 29, 34, 39, 44, 49);
+UPDATE "canciones" SET "Ocasion" = 'Meditar', "Clima" = 'Soleado', "EstadoDeAnimo" = 'Sereno' WHERE "Cancion_id" IN (5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
+UPDATE "canciones" SET "Ocasion" = 'Social', "Clima" = 'Despejado', "EstadoDeAnimo" = 'Animado' WHERE "Cancion_id" IN (51, 56, 61, 66, 71, 76, 81, 86, 91, 96);
+UPDATE "canciones" SET "Ocasion" = 'Estudiar', "Clima" = 'Nublado', "EstadoDeAnimo" = 'Concentrado' WHERE "Cancion_id" IN (52, 57, 62, 67, 72, 77, 82, 87, 92, 97);
+UPDATE "canciones" SET "Ocasion" = 'Relajacion', "Clima" = 'Despejado', "EstadoDeAnimo" = 'Tranquilo' WHERE "Cancion_id" IN (53, 58, 63, 68, 73, 78, 83, 88, 93, 98);
+UPDATE "canciones" SET "Ocasion" = 'Viajando', "Clima" = 'Soleado', "EstadoDeAnimo" = 'Aventurero' WHERE "Cancion_id" IN (54, 59, 64, 69, 74, 79, 84, 89, 94, 99);
+UPDATE "canciones" SET "Ocasion" = 'Jugando', "Clima" = 'Despejado', "EstadoDeAnimo" = 'Divertido' WHERE "Cancion_id" IN (55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+
