@@ -50,3 +50,8 @@ ALTER TABLE
     "canciones" ADD CONSTRAINT "canciones_album_id_foreign" FOREIGN KEY("Album_id") REFERENCES "albums"("Album_id");
 ALTER TABLE
     "albums" ADD CONSTRAINT "albums_artista_id_foreign" FOREIGN KEY("Artista_id") REFERENCES "artistas"("Artista_id");
+
+ALTER TABLE "canciones"
+ADD COLUMN "EstadoDeAnimo" VARCHAR(255),
+ADD COLUMN "Ocasion" VARCHAR(255),
+ADD COLUMN "Clima" VARCHAR(255);

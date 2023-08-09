@@ -95,3 +95,115 @@ VALUES
     (28, 10, 22, 'Pop/Rock', 'Viva la Vida'),
     (29, 10, 23, 'Pop/Rock', 'Fix You'),
     (30, 10, 24, 'Pop/Rock', 'Yellow');
+
+
+--@block
+    -- Canciones adicionales para Beyoncé
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (31, 1, 2, 'R&B/Pop', 'Halo'),
+    (32, 1, 3, 'R&B/Pop', 'Sorry'),
+    (33, 1, 3, 'R&B/Pop', 'Hold Up'),
+    (34, 1, 3, 'R&B/Pop', 'Freedom'),
+    (35, 1, 2, 'R&B/Pop', 'If I Were a Boy'),
+    (36, 1, 2, 'R&B/Pop', 'Sweet Dreams'),
+    (37, 1, 3, 'R&B/Pop', 'All Night');
+
+-- Canciones adicionales para Ed Sheeran
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (38, 2, 5, 'Pop', 'Photograph'),
+    (39, 2, 4, 'Pop', 'Galway Girl'),
+    (40, 2, 5, 'Pop', 'Perfect'),
+    (41, 2, 4, 'Pop', 'Castle on the Hill'),
+    (42, 2, 4, 'Pop', 'Shape of You'),
+    (43, 2, 5, 'Pop', 'Thinking Out Loud'),
+    (44, 2, 5, 'Pop', 'I See Fire');
+
+-- Canciones adicionales para Rihanna
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (45, 3, 6, 'R&B/Pop', 'Rude Boy'),
+    (46, 3, 7, 'R&B/Pop', 'Stay'),
+    (47, 3, 6, 'R&B/Pop', 'Don´t Stop the Music'),
+    (48, 3, 8, 'R&B/Pop', 'Where Have You Been'),
+    (49, 3, 6, 'R&B/Pop', 'Take a Bow'),
+    (50, 3, 6, 'R&B/Pop', 'Only Girl (In the World)'),
+    (51, 3, 8, 'Electrónica/Dance', 'Cheers (Drink to That)');
+
+-- Canciones adicionales para Michael Jackson
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (52, 4, 9, 'Pop/R&B', 'Smooth Criminal'),
+    (53, 4, 9, 'Pop/R&B', 'Black or White'),
+    (54, 4, 10, 'Pop/R&B', 'Wanna Be Startin´ Somethin´'),
+    (55, 4, 10, 'Pop/R&B', 'Human Nature'),
+    (56, 4, 9, 'Pop/R&B', 'Don´t Stop ´Til You Get Enough'),
+    (57, 4, 10, 'Pop/R&B', 'The Girl Is Mine'),
+    (58, 4, 9, 'Pop/R&B', 'Remember the Time');
+
+-- Canciones adicionales para Taylor Swift
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (59, 5, 11, 'Pop', 'Wildest Dreams'),
+    (60, 5, 11, 'Pop', 'Bad Blood'),
+    (61, 5, 10, 'Pop/Country', 'You Belong with Me'),
+    (62, 5, 11, 'Pop', 'Style'),
+    (63, 5, 10, 'Pop/Country', 'Fifteen'),
+    (64, 5, 11, 'Pop', 'Out of the Woods'),
+    (65, 5, 11, 'Pop', 'New Romantics');
+
+-- Canciones adicionales para Bruno Mars
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (66, 6, 12, 'Pop/R&B', 'Grenade'),
+    (67, 6, 14, 'R&B/Pop/Funk', 'That´s What I Like'),
+    (68, 6, 13, 'Funk/Pop', 'Treasure'),
+    (69, 6, 14, 'R&B/Pop/Funk', 'Chunky'),
+    (70, 6, 14, 'R&B/Pop/Funk', 'Perm'),
+    (71, 6, 14, 'R&B/Pop/Funk', 'Versace on the Floor'),
+    (72, 6, 13, 'Funk/Pop', 'Uptown Funk');
+
+-- Canciones adicionales para Adele
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (73, 7, 16, 'Pop/Soul', 'Set Fire to the Rain'),
+    (74, 7, 15, 'Pop/Soul', 'Turning Tables'),
+    (75, 7, 15, 'Pop/Soul', 'Rumour Has It'),
+    (76, 7, 16, 'Pop/Soul', 'Someone Like You'),
+    (77, 7, 15, 'Pop/Soul', 'Rolling in the Deep'),
+    (78, 7, 16, 'Pop/Soul', 'Hello'),
+    (79, 7, 16, 'Pop/Soul', 'When We Were Young');
+
+-- Canciones adicionales para Drake
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (80, 8, 17, 'Hip-Hop/R&B', 'Started From the Bottom'),
+    (81, 8, 18, 'Hip-Hop/R&B', 'Nice for What'),
+    (82, 8, 18, 'Hip-Hop/R&B', 'Nonstop'),
+    (83, 8, 18, 'Hip-Hop/R&B', 'Money In The Grave'),
+    (84, 8, 17, 'Hip-Hop/R&B', 'One Dance'),
+    (85, 8, 17, 'Hip-Hop/R&B', 'Controlla'),
+    (86, 8, 18, 'Hip-Hop/R&B', 'Chicago Freestyle');
+
+-- Canciones adicionales para Ariana Grande
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (87, 9, 21, 'Pop/R&B', '34+35'),
+    (88, 9, 20, 'Pop/R&B', 'Imagine'),
+    (89, 9, 20, 'Pop/R&B', 'Needy'),
+    (90, 9, 21, 'Pop/R&B', 'POV'),
+    (91, 9, 19, 'Pop/R&B', 'Break Free'),
+    (92, 9, 19, 'Pop/R&B', 'No Tears Left to Cry'),
+    (93, 9, 21, 'Pop/R&B', 'My Hair');
+
+-- Canciones adicionales para Coldplay
+INSERT INTO "canciones" ("Cancion_id", "Artista_id", "Album_id", "Genero", "Nombre")
+VALUES
+    (94, 10, 24, 'Pop/Rock', 'Fix You'),
+    (95, 10, 23, 'Pop/Rock', 'Clocks'),
+    (96, 10, 23, 'Pop/Rock', 'The Scientist'),
+    (97, 10, 24, 'Pop/Rock', 'Viva la Vida'),
+    (98, 10, 24, 'Pop/Rock', 'Adventure of a Lifetime'),
+    (99, 10, 23, 'Pop/Rock', 'Yellow'),
+    (100, 10, 23, 'Pop/Rock', 'In My Place');
