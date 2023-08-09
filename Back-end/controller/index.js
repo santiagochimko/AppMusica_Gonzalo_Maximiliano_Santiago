@@ -23,3 +23,19 @@ exports.traerFiltros = async (req, res) => {
     res.status(500).json({ error: "Hubo un error al obtener los filtros." });
   }
 };
+
+exports.login = async (req, res) => {
+  const username = req.body.Nombre;
+  const password = req.body.Contrasenia;
+
+  try {
+    const user = await knex("usuarios").where("Nombre", username).first();
+    if (user && user.Contrasenia == password) {
+      res.json("Entranding");
+    } else {
+      res.json("Usuario o contrasenia incorrecta");
+    }
+  } catch {
+    res.status(500).json("Error del server");
+  }
+};

@@ -26,8 +26,8 @@ ADD PRIMARY KEY("Cancion_id");
 CREATE TABLE "usuarios"(
     "Usuario_id" INTEGER NOT NULL,
     "Mail" VARCHAR(255) NOT NULL,
-    "Nombre" BIGINT NOT NULL,
-    "Contrasenia" BIGINT NOT NULL,
+    "Nombre" VARCHAR(255) NOT NULL,
+    "Contrasenia" VARCHAR(255) NOT NULL,
     "FotoUsuarios" BIGINT NOT NULL
 );
 ALTER TABLE "usuarios"
