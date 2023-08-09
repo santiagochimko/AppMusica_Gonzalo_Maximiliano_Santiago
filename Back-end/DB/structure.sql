@@ -50,3 +50,34 @@ ALTER TABLE
     "canciones" ADD CONSTRAINT "canciones_album_id_foreign" FOREIGN KEY("Album_id") REFERENCES "albums"("Album_id");
 ALTER TABLE
     "albums" ADD CONSTRAINT "albums_artista_id_foreign" FOREIGN KEY("Artista_id") REFERENCES "artistas"("Artista_id");
+
+ALTER TABLE "canciones"
+ADD COLUMN "EstadoDeAnimo" VARCHAR(255),
+ADD COLUMN "Ocasion" VARCHAR(255),
+ADD COLUMN "Clima" VARCHAR(255);
+
+--@block
+INSERT INTO canciones (
+    Cancion_id,
+    Artista_id,
+    Album_id,
+    Genero,
+    Nombre,
+    EstadoDeAnimo,
+    Ocasion,
+    Clima
+  )
+VALUES (
+    Cancion_id:integer,
+    Artista_id:integer,
+    Album_id:integer,
+    'Genero:character varying',
+    'Nombre:character varying',
+    'EstadoDeAnimo:character varying',
+    'Ocasion:character varying',
+    'Clima:character varying'
+  );  
+
+
+
+
