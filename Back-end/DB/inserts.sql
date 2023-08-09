@@ -5,12 +5,12 @@ VALUES (1, 'Beyoncé', 'R&B/Pop', 123456),
     (2, 'Ed Sheeran', 'Pop', 789012),
     (3, 'Rihanna', 'R&B/Pop', 345678),
     (4, 'Michael Jackson', 'Pop', 901234),
-    (5, 'Taylor Swift', 'Pop/Country', 567890),
+    (5, 'Taylor Swift', 'Country', 567890),
     (6, 'Bruno Mars', 'Pop/R&B', 234567),
-    (7, 'Adele', 'Pop/Soul', 678901),
+    (7, 'Adele', 'Soul', 678901),
     (8, 'Drake', 'Hip-Hop/R&B', 345678),
     (9, 'Ariana Grande', 'Pop/R&B', 901234),
-    (10, 'Coldplay', 'Pop/Rock', 456789);
+    (10, 'Coldplay', 'Rock', 456789);
 --@block
 -- Cargar datos en la tabla "albums"
 INSERT INTO "albums" (
@@ -70,17 +70,17 @@ VALUES -- Beyoncé
     -- Ed Sheeran
     (4, 2, 4, 'Pop', 'Shape of You'),
     (5, 2, 5, 'Pop', 'Thinking Out Loud'),
-    (6, 2, 4, 'Pop/Rock', 'Castle on the Hill'),
+    (6, 2, 4, 'Rock', 'Castle on the Hill'),
     -- Rihanna
     (7, 3, 6, 'R&B/Pop', 'Umbrella'),
     (8, 3, 7, 'R&B/Pop', 'Diamonds'),
     (9, 3, 8, 'Electrónica/Dance', 'We Found Love'),
     -- Michael Jackson
     (10, 4, 9, 'Pop/R&B', 'Billie Jean'),
-    (11, 4, 9, 'Pop/Rock', 'Beat It'),
-    (12, 4, 9, 'Pop/Rock', 'Thriller'),
+    (11, 4, 9, 'Rock', 'Beat It'),
+    (12, 4, 9, 'Rock', 'Thriller'),
     -- Taylor Swift
-    (13, 5, 10, 'Pop/Country', 'Love Story'),
+    (13, 5, 10, 'Country', 'Love Story'),
     (14, 5, 11, 'Pop', 'Shake It Off'),
     (15, 5, 11, 'Pop', 'Blank Space'),
     -- Bruno Mars
@@ -88,9 +88,9 @@ VALUES -- Beyoncé
     (17, 6, 13, 'Funk/Pop', 'Uptown Funk'),
     (18, 6, 14, 'R&B/Pop/Funk', '24K Magic'),
     -- Adele
-    (19, 7, 15, 'Pop/Soul', 'Rolling in the Deep'),
-    (20, 7, 15, 'Pop/Soul', 'Someone Like You'),
-    (21, 7, 16, 'Pop/Soul', 'Hello'),
+    (19, 7, 15, 'Soul', 'Rolling in the Deep'),
+    (20, 7, 15, 'Soul', 'Someone Like You'),
+    (21, 7, 16, 'Soul', 'Hello'),
     -- Drake
     (22, 8, 17, 'Hip-Hop/R&B', 'Hotline Bling'),
     (23, 8, 18, 'Hip-Hop/R&B', 'God´s Plan'),
@@ -100,10 +100,9 @@ VALUES -- Beyoncé
     (26, 9, 20, 'Pop/R&B', 'Thank U, Next'),
     (27, 9, 21, 'Pop/R&B', 'Positions'),
     -- Coldplay
-    (28, 10, 22, 'Pop/Rock', 'Viva la Vida'),
-    (29, 10, 23, 'Pop/Rock', 'Fix You'),
-    (30, 10, 24, 'Pop/Rock', 'Yellow');
---@block
+    (28, 10, 22, 'Rock', 'Viva la Vida'),
+    (29, 10, 23, 'Rock', 'Fix You'),
+    (30, 10, 24, 'Rock', 'Yellow');
 -- Canciones adicionales para Beyoncé
 INSERT INTO "canciones" (
         "Cancion_id",
@@ -192,9 +191,9 @@ INSERT INTO "canciones" (
     )
 VALUES (59, 5, 11, 'Pop', 'Wildest Dreams'),
     (60, 5, 11, 'Pop', 'Bad Blood'),
-    (61, 5, 10, 'Pop/Country', 'You Belong with Me'),
+    (61, 5, 10, 'Country', 'You Belong with Me'),
     (62, 5, 11, 'Pop', 'Style'),
-    (63, 5, 10, 'Pop/Country', 'Fifteen'),
+    (63, 5, 10, 'Country', 'Fifteen'),
     (64, 5, 11, 'Pop', 'Out of the Woods'),
     (65, 5, 11, 'Pop', 'New Romantics');
 -- Canciones adicionales para Bruno Mars
@@ -226,13 +225,13 @@ INSERT INTO "canciones" (
         "Genero",
         "Nombre"
     )
-VALUES (73, 7, 16, 'Pop/Soul', 'Set Fire to the Rain'),
-    (74, 7, 15, 'Pop/Soul', 'Turning Tables'),
-    (75, 7, 15, 'Pop/Soul', 'Rumour Has It'),
-    (76, 7, 16, 'Pop/Soul', 'Someone Like You'),
-    (77, 7, 15, 'Pop/Soul', 'Rolling in the Deep'),
-    (78, 7, 16, 'Pop/Soul', 'Hello'),
-    (79, 7, 16, 'Pop/Soul', 'When We Were Young');
+VALUES (73, 7, 16, 'Soul', 'Set Fire to the Rain'),
+    (74, 7, 15, 'Soul', 'Turning Tables'),
+    (75, 7, 15, 'Soul', 'Rumour Has It'),
+    (76, 7, 16, 'Soul', 'Someone Like You'),
+    (77, 7, 15, 'Soul', 'Rolling in the Deep'),
+    (78, 7, 16, 'Soul', 'Hello'),
+    (79, 7, 16, 'Soul', 'When We Were Young');
 -- Canciones adicionales para Drake
 INSERT INTO "canciones" (
         "Cancion_id",
@@ -277,19 +276,22 @@ INSERT INTO "canciones" (
         "Genero",
         "Nombre"
     )
-VALUES (94, 10, 24, 'Pop/Rock', 'Fix You'),
-    (95, 10, 23, 'Pop/Rock', 'Clocks'),
-    (96, 10, 23, 'Pop/Rock', 'The Scientist'),
-    (97, 10, 24, 'Pop/Rock', 'Viva la Vida'),
+VALUES (94, 10, 24, 'Rock', 'Fix You'),
+    (95, 10, 23, 'Rock', 'Clocks'),
+    (96, 10, 23, 'Rock', 'The Scientist'),
+    (97, 10, 24, 'Rock', 'Viva la Vida'),
     (
         98,
         10,
         24,
-        'Pop/Rock',
+        'Rock',
         'Adventure of a Lifetime'
     ),
-    (99, 10, 23, 'Pop/Rock', 'Yellow'),
-    (100, 10, 23, 'Pop/Rock', 'In My Place');
+    (99, 10, 23, 'Rock', 'Yellow'),
+    (100, 10, 23, 'Rock', 'In My Place');
+UPDATE "canciones"
+SET "Genero" = SUBSTRING("Genero", 1, POSITION('/' IN "Genero") - 1)
+WHERE "Genero" LIKE '%/%';
 --@block
 -- Asignar ocasión, clima y estado de ánimo a cada canción en la tabla "canciones"
 UPDATE "canciones"
