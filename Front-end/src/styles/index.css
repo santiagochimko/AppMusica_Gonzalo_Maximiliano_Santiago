@@ -7,5 +7,6 @@
 
 body {
   width: 368px;
-  height: 792px;
+  height: 792px; 
+  margin: 0 auto;
 }

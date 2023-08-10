@@ -289,9 +289,11 @@ VALUES (94, 10, 24, 'Rock', 'Fix You'),
     ),
     (99, 10, 23, 'Rock', 'Yellow'),
     (100, 10, 23, 'Rock', 'In My Place');
+
 UPDATE "canciones"
 SET "Genero" = SUBSTRING("Genero", 1, POSITION('/' IN "Genero") - 1)
 WHERE "Genero" LIKE '%/%';
+
 --@block
 -- Asignar ocasión, clima y estado de ánimo a cada canción en la tabla "canciones"
 UPDATE "canciones"
@@ -344,3 +346,8 @@ SET "Ocasion" = 'Jugando',
     "Clima" = 'Despejado',
     "EstadoDeAnimo" = 'Divertido'
 WHERE "Cancion_id" IN (55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+
+
+delete From usuarios;
+INSERT INTO "usuarios" ("Usuario_id", "Mail", "Nombre", "Contrasenia","FotoUsuarios")
+VALUES (2, 'pepe@senpai.com', 'Gonza', 12345, 123456)

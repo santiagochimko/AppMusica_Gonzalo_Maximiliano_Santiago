@@ -29,6 +29,7 @@ exports.login = async (req, res) => {
   const password = req.body.Contrasenia;
 
   try {
+  //  const a = await knex.raw(`SELECT tablename FROM pg_tables WHERE schemaname='public'`);
     const user = await knex("usuarios").where("Nombre", username).first();
     if (user && user.Contrasenia == password) {
       res.json("Entranding");
