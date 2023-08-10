@@ -6,7 +6,13 @@
 }
 
 body {
-  width: 368px;
-  height: 792px; 
+  width: 425px;
+  height: 100%; 
   margin: 0 auto;
 }
+
+div#root {
+  position: relative;
+  height: 100vh;
+}
+

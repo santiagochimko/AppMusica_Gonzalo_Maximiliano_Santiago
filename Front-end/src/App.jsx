@@ -1,11 +1,12 @@
-import React from 'react';
-import Home from './views/Home';
+import React from "react";
+import Home from "./views/Home";
+import "./styles/App.css";
 
 const App = () => {
   return (
-    <div className="app">
+    <>
       <Home />
-    </div>
+    </>
   );
 };
 
