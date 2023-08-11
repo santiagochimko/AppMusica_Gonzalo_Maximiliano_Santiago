@@ -1,26 +1,17 @@
 {
   "sqltools.connections": [
     {
-      "previewLimit": 50,
-      "server": "localhost",
-      "port": 5432,
-      "driver": "PostgreSQL",
-      "name": "ProyectoFinal",
-      "database": "ProyectoFinal",
-      "username": "postgres"
-    },
-    {
       "pgOptions": {
         "ssl": true
       },
       "previewLimit": 50,
       "server": "ep-tight-hill-04275720.us-east-2.aws.neon.tech",
       "port": 5432,
-      "askForPassword": true,
       "driver": "PostgreSQL",
       "name": "Neon",
-      "database": "neondb",
-      "username": "GonBac"
+      "database": "proyecto_final",
+      "username": "GonBac",
+      "password": "dhrUuBFS8q6E"
     }
   ]
 }
