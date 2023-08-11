@@ -62,16 +62,19 @@ input {
     font-weight: 600;
     background-color: transparent;
     cursor: pointer;
+    z-index: 1;
 }
 
 input:focus {
     border: 2px solid #FF8E0A;
     outline: none;
 }
-.pswlabel{
+
+.pswlabel {
     color: #26262E;
 }
-.password-input-container{
+
+.password-input-container {
     display: flex;
     width: 90%;
     padding: 12px 16px;
@@ -184,21 +187,16 @@ span {
 .valid-user-pass {
     background-color: #FF8E0A;
 }
+
 .invalid-password {
-    border: 2px solid #EA0F0F; 
-  }
-  
-  .invalid-password-text {
+    border: 2px solid #EA0F0F;
+}
+
+.invalid-password-text {
     color: #EA0F0F;
     visibility: visible;
 }
-.password-input-container.valid-password {
-    border: 2px solid green;
-  }
-  
-  .invalid-password-text.valid-password {
-    color: green;
-  }
+
 .top-gradient {
     position: absolute;
     width: 100%;

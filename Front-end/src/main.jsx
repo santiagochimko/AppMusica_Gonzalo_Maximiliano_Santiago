@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import "./styles/index.css";
 import Registration from "./views/Registration.jsx"
 import RegistrationStep2 from "./views/RegistrationStep2.jsx"
+import Login from "./views/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
   {
     path: "/registration_step_2",
     element: <RegistrationStep2 />,
-  }
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
   
 ]);
 

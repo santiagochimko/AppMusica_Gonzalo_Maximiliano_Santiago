@@ -6,16 +6,11 @@ import Button from "../Components/Button";
 import eyeSvg from "../assets/eye.svg";
 import eyeOpenSvg from "../assets/eye_open.svg";
 
-const RegistrationStep2 = () => {
+const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -27,18 +22,23 @@ const RegistrationStep2 = () => {
     setIsPasswordValid(newPassword.length >= 8);
   };
 
+  const isUserNameEmpty = userName.trim() === "";
+  const isPasswordEmpty = password === "";
+
+  const isFormValid = !isUserNameEmpty && !isPasswordEmpty && isPasswordValid;
+
   return (
     <main id="main-registration">
       <div className="top-gradient"></div>
       <div className="heading">
-        <Link to="/registration_step_1">
+        <Link to="/">
           <button className="arrow_back">
             <img src={arrowLeftImage} alt="close modal" />
           </button>
         </Link>
-        <h2>Crear Cuenta</h2>
+        <h2>Iniciar Sesión</h2>
       </div>
-      <h1>Ingresa un nombre de usuario y contraseña.</h1>
+      
       <label htmlFor="userName">Nombre de Usuario:</label>
       <input
         type="text"
@@ -47,16 +47,12 @@ const RegistrationStep2 = () => {
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
-      {!userName && <p className="msj_alert">El nombre de usuario no puede estar vacío.</p>}
+      
 
-      <label className={`pswlabel ${!isPasswordValid ? "invalid-password-text" : ""}`} htmlFor="psw">
+      <label className="pswlabel" htmlFor="psw">
         Contraseña:
       </label>
-      <div
-        className={`password-input-container ${
-          !isPasswordValid ? "invalid-password" : ""
-        }`}
-      >
+      <div className="password-input-container" >
         <input
           type={showPassword ? "text" : "password"}
           id="psw"
@@ -65,38 +61,16 @@ const RegistrationStep2 = () => {
           onChange={handlePasswordChange}
         />
         <span className="password-toggle" onClick={togglePasswordVisibility}>
-          {showPassword ? (
-            <img src={eyeOpenSvg} alt="Mostrar contraseña" />
-          ) : (
-            <img src={eyeSvg} alt="Ocultar contraseña" />
-          )}
+          {showPassword ? <img src={eyeOpenSvg} alt="Mostrar contraseña" /> : <img src={eyeSvg} alt="Ocultar contraseña" />}
         </span>
       </div>
-      <p className={`msj_alert ${!isPasswordValid ? "invalid-password-text" : "invisible"}`}>
-        La contraseña debe contener al menos 8 caracteres.
-      </p>
+      
 
-      <label id="check" htmlFor="check1">
-        <input
-          type="checkbox"
-          id="check1"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-        />
-        He leído y acepto los Términos y Condiciones.
-      </label>
-
-      <Button
-        className={`btn_continue ${
-          userName && isPasswordValid && isChecked ? "valid-email" : ""
-        }`}
-        text="Continuar"
-        disabled={!userName || !isPasswordValid || !isChecked}
-      />
+      <Button className={`btn_continue ${isFormValid ? "valid-email" : ""}`} text="Continuar" disabled={!isFormValid} />
 
       <div className="btm-gradient"></div>
     </main>
   );
 };
 
-export default RegistrationStep2;
+export default Login;

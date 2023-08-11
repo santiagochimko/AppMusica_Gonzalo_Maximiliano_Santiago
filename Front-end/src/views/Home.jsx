@@ -24,6 +24,7 @@ const Home = () => {
 
   const handleLogin = () => {
     // Lógica para el botón de inicio de sesión
+    navigate (`/login`)
   };  
 
   return (
