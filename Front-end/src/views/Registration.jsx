@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../styles/Registration.css";
 import { Link } from "react-router-dom";
 import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import Button from "../Components/Button";
+import "../styles/Registration.css";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const Registration = () => {
     setEmail(newEmail);
     // Validar el formato del correo electrónico usando una expresión regular
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsValidEmail(emailPattern.test(newEmail));
+    setIsValidEmail(newEmail === "" ? false : emailPattern.test(newEmail));
   };
 
   return (
@@ -37,7 +37,7 @@ const Registration = () => {
         onChange={handleEmailChange}
       />
       <p>Deberás poder confirmarlo luego.</p>
-      <Link className="btn_placer" to="/registration_step_2">
+      <Link className="btn_placer" to={isValidEmail ? "/registration_step_2" : ""}>
         <Button
           className={`btn_continue ${isValidEmail ? "valid-email" : ""}`}
           text="Continuar"
