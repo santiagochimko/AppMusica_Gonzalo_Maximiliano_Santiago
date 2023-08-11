@@ -1,11 +1,21 @@
-import React from "react";
-import Home from "./views/Home";
-import "./styles/App.css";
+import React from 'react';
+import { useState } from 'react'
+import MatchScreen from './views/matchScreen'
+import './App.css'
+
+import Home from './views/Home';
+
 
 const App = () => {
   return (
     <>
-      <Home />
+      <>
+        <MatchScreen />
+      </div> 
+      
+       {/* <div className="app">
+        <Home />
+      </>   */}
     </>
   );
 };
