@@ -3,18 +3,22 @@ import "../styles/Registration.css";
 import { Link } from "react-router-dom";
 import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import Button from "../Components/Button";
+import eyeSvg from "../assets/eye.svg";
+import eyeOpenSvg from "../assets/eye_open.svg";
 
 const RegistrationStep2 = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
-  const isUserNameValid = userName.trim() !== "";
-  const isPasswordValid = password.length >= 8;
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <main id="main-registration">
@@ -36,17 +40,26 @@ const RegistrationStep2 = () => {
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
-      {!isUserNameValid && <p>El nombre de usuario no puede estar vacío.</p>}
+      {!userName && <p>El nombre de usuario no puede estar vacío.</p>}
 
-      <label id="pswlabel" htmlFor="psw">Contraseña:</label>
-      <input
-        type="password"
-        id="psw"
-        name="psw"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {!isPasswordValid && (
+      <label htmlFor="psw">Contraseña:</label>
+      <div className="password-input-container">
+        <input
+          type={showPassword ? "text" : "password"}
+          id="psw"
+          name="psw"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <span className="password-toggle" onClick={togglePasswordVisibility}>
+          {showPassword ? (
+            <img src={eyeOpenSvg} alt="Mostrar contraseña" />
+          ) : (
+            <img src={eyeSvg} alt="Ocultar contraseña" />
+          )}
+        </span>
+      </div>
+      {password.length > 0 && password.length < 8 && (
         <p>La contraseña debe contener al menos 8 caracteres.</p>
       )}
 
@@ -57,14 +70,19 @@ const RegistrationStep2 = () => {
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
-        He leído y acepto los <span>Términos</span> y <span>Condiciones</span>.
+        He leído y acepto los Términos y Condiciones.
       </label>
 
       <Button
-        className={`btn_continue ${isUserNameValid && isPasswordValid && isChecked ? "valid-user-pass" : ""}`}
+        className={`btn_continue ${
+          userName && password && isChecked && password.length >= 8
+            ? "valid-email"
+            : ""
+        }`}
         text="Continuar"
-        disabled={!isUserNameValid || !isPasswordValid || !isChecked}
+        disabled={!userName || !password || !isChecked || password.length < 8}
       />
+
       <div className="btm-gradient"></div>
     </main>
   );
