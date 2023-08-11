@@ -2,10 +2,10 @@ const jwt = require("jsonwebtoken");
 const { secret } = require("../controller/auth.controller");
 
 exports.authMiddleWare = (req, res, next) => {
-  const token = req.headers.authorization;
+  const token = req.cookies.authToken;
 
   if (!token) {
-    return res.status(401).json({ mensajae: "acceso denegado" });
+    return res.status(401).json({ mensajae: "Acceso denegado" });
   }
 
   try {
