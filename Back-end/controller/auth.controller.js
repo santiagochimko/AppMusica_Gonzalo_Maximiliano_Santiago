@@ -25,6 +25,7 @@ exports.login = async (req, res, next) => {
   }
 
   sendToken(res, next, usuario.mail, usuario.nombre);
+  res.json({ mensaje: "Ingreso de usuario correcto" });
 };
 
 const secret = "mi secreto para firmar el jwt";
@@ -38,11 +39,13 @@ exports.register = async (req, res, next) => {
     .insert({ ...req.body, contrasenia: hashContrasenia })
     .returning("*");
   sendToken(res, next, usuario[0]);
+  res.json({
+    mensaje: "Registro de usuario correcto",
+  });
 };
 
 const sendToken = (res, next, { id, mail, nombre }) => {
   const token = jwt.sign({ mail, nombre, id }, secret);
   res.cookie("authToken", token, { httpOnly: true, secure: true });
   res.status(200);
-  res.json({ mensaje: "Ingreso de usuario correcto" });
 };
