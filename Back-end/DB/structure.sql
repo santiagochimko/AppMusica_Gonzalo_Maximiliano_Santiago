@@ -31,7 +31,7 @@ CREATE TABLE "usuarios"(
     "mail" VARCHAR(255) NOT NULL,
     "nombre" VARCHAR(255) NOT NULL,
     "contrasenia" VARCHAR(255) NOT NULL,
-    "fotoUsuarios" VARCHAR
+    "fotousuarios" VARCHAR
 );
 CREATE TABLE "artistas"(
     "id" SERIAL PRIMARY KEY,
