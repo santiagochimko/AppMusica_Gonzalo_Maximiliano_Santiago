@@ -1,20 +1,21 @@
-import { useState } from 'react'
-// import matchScreen from './components/matchScreen'
-import './App.css'
 import React from 'react';
+import { useState } from 'react'
+import MatchScreen from './views/matchScreen'
+import './App.css'
+
 import Home from './views/Home';
 
-// function App() {
-//   const [count, setCount] = useState(0)
-  
 
 const App = () => {
   return (
     <>
-      {/* <matchScreen /> */}
       <div className="app">
+        <MatchScreen />
+      </div> 
+      
+       {/* <div className="app">
         <Home />
-      </div>
+      </div>   */}
     </>
   );
 };
