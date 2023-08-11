@@ -36,7 +36,7 @@ const Registration = () => {
         value={email}
         onChange={handleEmailChange}
       />
-      <p>Deberás poder confirmarlo luego.</p>
+      <p className="msj_alert">Deberás poder confirmarlo luego.</p>
       <Link className="btn_placer" to={isValidEmail ? "/registration_step_2" : ""}>
         <Button
           className={`btn_continue ${isValidEmail ? "valid-email" : ""}`}

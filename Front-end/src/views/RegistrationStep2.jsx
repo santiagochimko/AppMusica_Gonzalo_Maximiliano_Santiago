@@ -11,6 +11,7 @@ const RegistrationStep2 = () => {
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -18,6 +19,12 @@ const RegistrationStep2 = () => {
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    setIsPasswordValid(newPassword.length >= 8);
   };
 
   return (
@@ -40,16 +47,22 @@ const RegistrationStep2 = () => {
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
-      {!userName && <p>El nombre de usuario no puede estar vacío.</p>}
+      {!userName && <p className="msj_alert">El nombre de usuario no puede estar vacío.</p>}
 
-      <label htmlFor="psw">Contraseña:</label>
-      <div className="password-input-container">
+      <label className={`pswlabel ${!isPasswordValid ? "invalid-password-text" : ""}`} htmlFor="psw">
+        Contraseña:
+      </label>
+      <div
+        className={`password-input-container ${
+          !isPasswordValid ? "invalid-password" : ""
+        }`}
+      >
         <input
           type={showPassword ? "text" : "password"}
           id="psw"
           name="psw"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
         />
         <span className="password-toggle" onClick={togglePasswordVisibility}>
           {showPassword ? (
@@ -59,9 +72,9 @@ const RegistrationStep2 = () => {
           )}
         </span>
       </div>
-      {password.length > 0 && password.length < 8 && (
-        <p>La contraseña debe contener al menos 8 caracteres.</p>
-      )}
+      <p className={`msj_alert ${!isPasswordValid ? "invalid-password-text" : "invisible"}`}>
+        La contraseña debe contener al menos 8 caracteres.
+      </p>
 
       <label id="check" htmlFor="check1">
         <input
@@ -75,12 +88,10 @@ const RegistrationStep2 = () => {
 
       <Button
         className={`btn_continue ${
-          userName && password && isChecked && password.length >= 8
-            ? "valid-email"
-            : ""
+          userName && isPasswordValid && isChecked ? "valid-email" : ""
         }`}
         text="Continuar"
-        disabled={!userName || !password || !isChecked || password.length < 8}
+        disabled={!userName || !isPasswordValid || !isChecked}
       />
 
       <div className="btm-gradient"></div>

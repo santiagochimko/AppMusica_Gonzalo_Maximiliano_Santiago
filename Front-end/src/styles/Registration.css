@@ -68,6 +68,9 @@ input:focus {
     border: 2px solid #FF8E0A;
     outline: none;
 }
+.pswlabel{
+    color: #26262E;
+}
 .password-input-container{
     display: flex;
     width: 90%;
@@ -121,7 +124,7 @@ input[type="checkbox"] {
     height: 20px;
 }
 
-#main-registration p {
+.msj_alert {
     align-self: stretch;
     color: #838486;
     font-size: 12px;
@@ -181,7 +184,21 @@ span {
 .valid-user-pass {
     background-color: #FF8E0A;
 }
-
+.invalid-password {
+    border: 2px solid #EA0F0F; 
+  }
+  
+  .invalid-password-text {
+    color: #EA0F0F;
+    visibility: visible;
+}
+.password-input-container.valid-password {
+    border: 2px solid green;
+  }
+  
+  .invalid-password-text.valid-password {
+    color: green;
+  }
 .top-gradient {
     position: absolute;
     width: 100%;
