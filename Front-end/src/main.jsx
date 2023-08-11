@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./styles/index.css";
 import Registration from "./views/Registration.jsx"
+import RegistrationStep2 from "./views/RegistrationStep2.jsx"
 
 const router = createBrowserRouter([
   {
@@ -11,8 +12,12 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/registration",
+    path: "/registration_step_1",
     element: <Registration />,
+  },
+  {
+    path: "/registration_step_2",
+    element: <RegistrationStep2 />,
   }
   
 ]);

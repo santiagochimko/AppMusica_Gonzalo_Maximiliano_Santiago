@@ -1,12 +1,24 @@
+import React, { useState } from "react";
 import "../styles/Registration.css";
 import { Link } from "react-router-dom";
 import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import Button from "../Components/Button";
 
 const Registration = () => {
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+
+  const handleEmailChange = (event) => {
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+    // Validar el formato del correo electrónico usando una expresión regular
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setIsValidEmail(emailPattern.test(newEmail));
+  };
+
   return (
     <main id="main-registration">
-        <div className='top-gradient'></div>
+      <div className="top-gradient"></div>
       <div className="heading">
         <Link to="/">
           <button className="arrow_back">
@@ -20,11 +32,19 @@ const Registration = () => {
       <input
         type="email"
         id="email"
-        name="email"        
+        name="email"
+        value={email}
+        onChange={handleEmailChange}
       />
       <p>Deberás poder confirmarlo luego.</p>
-      <Button className="btn_continue" text='Continuar' />
-      <div className='btm-gradient'></div>
+      <Link className="btn_placer" to="/registration_step_2">
+        <Button
+          className={`btn_continue ${isValidEmail ? "valid-email" : ""}`}
+          text="Continuar"
+          disabled={!isValidEmail}
+        />
+      </Link>
+      <div className="btm-gradient"></div>
     </main>
   );
 };

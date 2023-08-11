@@ -11,7 +11,7 @@ const Home = () => {
   const handleRegistration = () => {
     // Lógica para el botón de registro
     
-    navigate (`/registration`)
+    navigate (`/registration_step_1`)
   };
 
   const handleGoogleLogin = () => {
