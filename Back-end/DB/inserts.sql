@@ -1,16 +1,16 @@
 --@block
 -- Cargar datos en la tabla "artistas"
-INSERT INTO "artistas" ("id", "nombre", "genero", "fotoartista")
-VALUES (1, 'Beyoncé', 'R&B/Pop', 123456),
-    (2, 'Ed Sheeran', 'Pop', 789012),
-    (3, 'Rihanna', 'R&B/Pop', 345678),
-    (4, 'Michael Jackson', 'Pop', 901234),
+INSERT INTO "artistas" ("id", "nombre", "genero_id", "fotoartista")
+VALUES (1, 'Beyoncé', 8, 123456),
+    (2, 'Ed Sheeran', 5, 789012),
+    (3, 'Rihanna', 8, 345678),
+    (4, 'Michael Jackson', 5, 901234),
     (5, 'Taylor Swift', 'Country', 567890),
-    (6, 'Bruno Mars', 'Pop/R&B', 234567),
-    (7, 'Adele', 'Soul', 678901),
-    (8, 'Drake', 'Hip-Hop/R&B', 345678),
-    (9, 'Ariana Grande', 'Pop/R&B', 901234),
-    (10, 'Coldplay', 'Rock', 456789);
+    (6, 'Bruno Mars', 8, 234567),
+    (7, 'Adele', 2, 678901),
+    (8, 'Drake', 3, 345678),
+    (9, 'Ariana Grande', 8, 901234),
+    (10, 'Coldplay', 6, 456789);
 --@block
 -- Cargar datos en la tabla "albums"
 INSERT INTO "albums" (
@@ -54,104 +54,104 @@ INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
 VALUES -- Beyoncé
-    (1, 1, 1, 'R&B/Pop', 'Crazy in Love'),
+    (1, 1, 1, 8, 'Crazy in Love'),
     (
         2,
         1,
         2,
-        'R&B/Pop',
+        8,
         'Single Ladies (Put a Ring on It)'
     ),
-    (3, 1, 3, 'R&B/Pop', 'Formation'),
+    (3, 1, 3, 8, 'Formation'),
     -- Ed Sheeran
-    (4, 2, 4, 'Pop', 'Shape of You'),
-    (5, 2, 5, 'Pop', 'Thinking Out Loud'),
-    (6, 2, 4, 'Rock', 'Castle on the Hill'),
+    (4, 2, 4, 5, 'Shape of You'),
+    (5, 2, 5, 5, 'Thinking Out Loud'),
+    (6, 2, 4, 6, 'Castle on the Hill'),
     -- Rihanna
-    (7, 3, 6, 'R&B/Pop', 'Umbrella'),
-    (8, 3, 7, 'R&B/Pop', 'Diamonds'),
-    (9, 3, 8, 'Electrónica/Dance', 'We Found Love'),
+    (7, 3, 6, 8, 'Umbrella'),
+    (8, 3, 7, 8, 'Diamonds'),
+    (9, 3, 8, 7, 'We Found Love'),
     -- Michael Jackson
-    (10, 4, 9, 'Pop/R&B', 'Billie Jean'),
-    (11, 4, 9, 'Rock', 'Beat It'),
-    (12, 4, 9, 'Rock', 'Thriller'),
+    (10, 4, 9, 8, 'Billie Jean'),
+    (11, 4, 9, 6, 'Beat It'),
+    (12, 4, 9, 6, 'Thriller'),
     -- Taylor Swift
     (13, 5, 10, 'Country', 'Love Story'),
-    (14, 5, 11, 'Pop', 'Shake It Off'),
-    (15, 5, 11, 'Pop', 'Blank Space'),
+    (14, 5, 11, 5, 'Shake It Off'),
+    (15, 5, 11, 5, 'Blank Space'),
     -- Bruno Mars
-    (16, 6, 12, 'Pop/R&B', 'Just the Way You Are'),
-    (17, 6, 13, 'Funk/Pop', 'Uptown Funk'),
-    (18, 6, 14, 'R&B/Pop/Funk', '24K Magic'),
+    (16, 6, 12, 8, 'Just the Way You Are'),
+    (17, 6, 13, 1, 'Uptown Funk'),
+    (18, 6, 14, 4, '24K Magic'),
     -- Adele
-    (19, 7, 15, 'Soul', 'Rolling in the Deep'),
-    (20, 7, 15, 'Soul', 'Someone Like You'),
-    (21, 7, 16, 'Soul', 'Hello'),
+    (19, 7, 15, 4, 'Rolling in the Deep'),
+    (20, 7, 15, 2, 'Someone Like You'),
+    (21, 7, 16, 2, 'Hello'),
     -- Drake
-    (22, 8, 17, 'Hip-Hop/R&B', 'Hotline Bling'),
-    (23, 8, 18, 'Hip-Hop/R&B', 'God´s Plan'),
-    (24, 8, 18, 'Hip-Hop/R&B', 'In My Feelings'),
+    (22, 8, 17, 3, 'Hotline Bling'),
+    (23, 8, 18, 3, 'God´s Plan'),
+    (24, 8, 18, 3, 'In My Feelings'),
     -- Ariana Grande
-    (25, 9, 19, 'Pop/R&B', 'Problem'),
-    (26, 9, 20, 'Pop/R&B', 'Thank U, Next'),
-    (27, 9, 21, 'Pop/R&B', 'Positions'),
+    (25, 9, 19, 8, 'Problem'),
+    (26, 9, 20, 8, 'Thank U, Next'),
+    (27, 9, 21, 8, 'Positions'),
     -- Coldplay
-    (28, 10, 22, 'Rock', 'Viva la Vida'),
-    (29, 10, 23, 'Rock', 'Fix You'),
-    (30, 10, 24, 'Rock', 'Yellow');
+    (28, 10, 22, 6, 'Viva la Vida'),
+    (29, 10, 23, 6, 'Fix You'),
+    (30, 10, 24, 6, 'Yellow');
 -- Canciones adicionales para Beyoncé
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (31, 1, 2, 'R&B/Pop', 'Halo'),
-    (32, 1, 3, 'R&B/Pop', 'Sorry'),
-    (33, 1, 3, 'R&B/Pop', 'Hold Up'),
-    (34, 1, 3, 'R&B/Pop', 'Freedom'),
-    (35, 1, 2, 'R&B/Pop', 'If I Were a Boy'),
-    (36, 1, 2, 'R&B/Pop', 'Sweet Dreams'),
-    (37, 1, 3, 'R&B/Pop', 'All Night');
+VALUES (31, 1, 2, 8, 'Halo'),
+    (32, 1, 3, 8, 'Sorry'),
+    (33, 1, 3, 8, 'Hold Up'),
+    (34, 1, 3, 8, 'Freedom'),
+    (35, 1, 2, 8, 'If I Were a Boy'),
+    (36, 1, 2, 8, 'Sweet Dreams'),
+    (37, 1, 3, 8, 'All Night');
 -- Canciones adicionales para Ed Sheeran
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (38, 2, 5, 'Pop', 'Photograph'),
-    (39, 2, 4, 'Pop', 'Galway Girl'),
-    (40, 2, 5, 'Pop', 'Perfect'),
-    (41, 2, 4, 'Pop', 'Castle on the Hill'),
-    (42, 2, 4, 'Pop', 'Shape of You'),
-    (43, 2, 5, 'Pop', 'Thinking Out Loud'),
-    (44, 2, 5, 'Pop', 'I See Fire');
+VALUES (38, 2, 5, 5, 'Photograph'),
+    (39, 2, 4, 5, 'Galway Girl'),
+    (40, 2, 5, 5, 'Perfect'),
+    (41, 2, 4, 5, 'Castle on the Hill'),
+    (42, 2, 4, 5, 'Shape of You'),
+    (43, 2, 5, 5, 'Thinking Out Loud'),
+    (44, 2, 5, 5, 'I See Fire');
 -- Canciones adicionales para Rihanna
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (45, 3, 6, 'R&B/Pop', 'Rude Boy'),
-    (46, 3, 7, 'R&B/Pop', 'Stay'),
-    (47, 3, 6, 'R&B/Pop', 'Don´t Stop the Music'),
-    (48, 3, 8, 'R&B/Pop', 'Where Have You Been'),
-    (49, 3, 6, 'R&B/Pop', 'Take a Bow'),
-    (50, 3, 6, 'R&B/Pop', 'Only Girl (In the World)'),
+VALUES (45, 3, 6, 8, 'Rude Boy'),
+    (46, 3, 7, 8, 'Stay'),
+    (47, 3, 6, 8, 'Don´t Stop the Music'),
+    (48, 3, 8, 8, 'Where Have You Been'),
+    (49, 3, 6, 8, 'Take a Bow'),
+    (50, 3, 6, 8, 'Only Girl (In the World)'),
     (
         51,
         3,
         8,
-        'Electrónica/Dance',
+        7,
         'Cheers (Drink to That)'
     );
 -- Canciones adicionales para Michael Jackson
@@ -159,188 +159,251 @@ INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (52, 4, 9, 'Pop/R&B', 'Smooth Criminal'),
-    (53, 4, 9, 'Pop/R&B', 'Black or White'),
+VALUES (52, 4, 9, 8, 'Smooth Criminal'),
+    (53, 4, 9, 8, 'Black or White'),
     (
         54,
         4,
         10,
-        'Pop/R&B',
+        8,
         'Wanna Be Startin´ Somethin´'
     ),
-    (55, 4, 10, 'Pop/R&B', 'Human Nature'),
+    (55, 4, 10, 8, 'Human Nature'),
     (
         56,
         4,
         9,
-        'Pop/R&B',
+        8,
         'Don´t Stop ´Til You Get Enough'
     ),
-    (57, 4, 10, 'Pop/R&B', 'The Girl Is Mine'),
-    (58, 4, 9, 'Pop/R&B', 'Remember the Time');
+    (57, 4, 10, 8, 'The Girl Is Mine'),
+    (58, 4, 9, 8, 'Remember the Time');
 -- Canciones adicionales para Taylor Swift
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (59, 5, 11, 'Pop', 'Wildest Dreams'),
-    (60, 5, 11, 'Pop', 'Bad Blood'),
+VALUES (59, 5, 11, 5, 'Wildest Dreams'),
+    (60, 5, 11, 5, 'Bad Blood'),
     (61, 5, 10, 'Country', 'You Belong with Me'),
-    (62, 5, 11, 'Pop', 'Style'),
+    (62, 5, 11, 5, 'Style'),
     (63, 5, 10, 'Country', 'Fifteen'),
-    (64, 5, 11, 'Pop', 'Out of the Woods'),
-    (65, 5, 11, 'Pop', 'New Romantics');
+    (64, 5, 11, 5, 'Out of the Woods'),
+    (65, 5, 11, 5, 'New Romantics');
 -- Canciones adicionales para Bruno Mars
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (66, 6, 12, 'Pop/R&B', 'Grenade'),
-    (67, 6, 14, 'R&B/Pop/Funk', 'That´s What I Like'),
-    (68, 6, 13, 'Funk/Pop', 'Treasure'),
-    (69, 6, 14, 'R&B/Pop/Funk', 'Chunky'),
-    (70, 6, 14, 'R&B/Pop/Funk', 'Perm'),
+VALUES (66, 6, 12, 8, 'Grenade'),
+    (67, 6, 14, 1, 'That´s What I Like'),
+    (68, 6, 13, 1, 'Treasure'),
+    (69, 6, 14, 1, 'Chunky'),
+    (70, 6, 14, 1, 'Perm'),
     (
         71,
         6,
         14,
-        'R&B/Pop/Funk',
+        1,
         'Versace on the Floor'
     ),
-    (72, 6, 13, 'Funk/Pop', 'Uptown Funk');
+    (72, 6, 13, 1, 'Uptown Funk');
 -- Canciones adicionales para Adele
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (73, 7, 16, 'Soul', 'Set Fire to the Rain'),
-    (74, 7, 15, 'Soul', 'Turning Tables'),
-    (75, 7, 15, 'Soul', 'Rumour Has It'),
-    (76, 7, 16, 'Soul', 'Someone Like You'),
-    (77, 7, 15, 'Soul', 'Rolling in the Deep'),
-    (78, 7, 16, 'Soul', 'Hello'),
-    (79, 7, 16, 'Soul', 'When We Were Young');
+VALUES (73, 7, 16, 2, 'Set Fire to the Rain'),
+    (74, 7, 15, 2, 'Turning Tables'),
+    (75, 7, 15, 2, 'Rumour Has It'),
+    (76, 7, 16, 2, 'Someone Like You'),
+    (77, 7, 15, 2, 'Rolling in the Deep'),
+    (78, 7, 16, 2, 'Hello'),
+    (79, 7, 16, 2, 'When We Were Young');
 -- Canciones adicionales para Drake
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
 VALUES (
         80,
         8,
         17,
-        'Hip-Hop/R&B',
+        3,
         'Started From the Bottom'
     ),
-    (81, 8, 18, 'Hip-Hop/R&B', 'Nice for What'),
-    (82, 8, 18, 'Hip-Hop/R&B', 'Nonstop'),
-    (83, 8, 18, 'Hip-Hop/R&B', 'Money In The Grave'),
-    (84, 8, 17, 'Hip-Hop/R&B', 'One Dance'),
-    (85, 8, 17, 'Hip-Hop/R&B', 'Controlla'),
-    (86, 8, 18, 'Hip-Hop/R&B', 'Chicago Freestyle');
+    (81, 8, 18, 3, 'Nice for What'),
+    (82, 8, 18, 3, 'Nonstop'),
+    (83, 8, 18, 3, 'Money In The Grave'),
+    (84, 8, 17, 3, 'One Dance'),
+    (85, 8, 17, 3, 'Controlla'),
+    (86, 8, 18, 3, 'Chicago Freestyle');
 -- Canciones adicionales para Ariana Grande
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (87, 9, 21, 'Pop/R&B', '34+35'),
-    (88, 9, 20, 'Pop/R&B', 'Imagine'),
-    (89, 9, 20, 'Pop/R&B', 'Needy'),
-    (90, 9, 21, 'Pop/R&B', 'POV'),
-    (91, 9, 19, 'Pop/R&B', 'Break Free'),
-    (92, 9, 19, 'Pop/R&B', 'No Tears Left to Cry'),
-    (93, 9, 21, 'Pop/R&B', 'My Hair');
+VALUES (87, 9, 21, 8, '34+35'),
+    (88, 9, 20, 8, 'Imagine'),
+    (89, 9, 20, 8, 'Needy'),
+    (90, 9, 21, 8, 'POV'),
+    (91, 9, 19, 8, 'Break Free'),
+    (92, 9, 19, 8, 'No Tears Left to Cry'),
+    (93, 9, 21, 8, 'My Hair');
 -- Canciones adicionales para Coldplay
 INSERT INTO "canciones" (
         "id",
         "artista_id",
         "album_id",
-        "genero",
+        "genero_id",
         "nombre"
     )
-VALUES (94, 10, 24, 'Rock', 'Fix You'),
-    (95, 10, 23, 'Rock', 'Clocks'),
-    (96, 10, 23, 'Rock', 'The Scientist'),
-    (97, 10, 24, 'Rock', 'Viva la Vida'),
+VALUES (94, 10, 24, 6, 'Fix You'),
+    (95, 10, 23, 6, 'Clocks'),
+    (96, 10, 23, 6, 'The Scientist'),
+    (97, 10, 24, 6, 'Viva la Vida'),
     (
         98,
         10,
         24,
-        'Rock',
+        6,
         'Adventure of a Lifetime'
     ),
-    (99, 10, 23, 'Rock', 'Yellow'),
-    (100, 10, 23, 'Rock', 'In My Place');
-UPDATE "canciones"
-SET "genero" = SUBSTRING("genero", 1, POSITION('/' IN "genero") - 1)
-WHERE "genero" LIKE '%/%';
+    (99, 10, 23, 6, 'Yellow'),
+    (100, 10, 23, 6, 'In My Place');
 --@block
--- Asignar ocasión, clima y estado de ánimo a cada canción en la tabla "canciones"
 UPDATE "canciones"
-SET "ocasion" = 'Ejercicio fisico',
-    "clima" = 'Soleado',
-    "estadodeanimo" = 'Motivado'
+SET "estadodeanimo_id" = 6,
+    "clima_id" = 2,
+    "ocasion_id" = 7
 WHERE "id" IN (1, 6, 11, 16, 21, 26, 31, 36, 41, 46);
 UPDATE "canciones"
-SET "ocasion" = 'Limpieza',
-    "clima" = 'Nublado',
-    "estadodeanimo" = 'Relajado'
+SET "ocasion_id" = 8,
+    "clima_id" = 4,
+    "estadodeanimo_id" = 8
 WHERE "id" IN (2, 7, 12, 17, 22, 27, 32, 37, 42, 47);
 UPDATE "canciones"
-SET "ocasion" = 'Celebracion',
-    "clima" = 'Despejado',
-    "estadodeanimo" = 'Feliz'
+SET "ocasion_id" = 3,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 3
 WHERE "id" IN (3, 8, 13, 18, 23, 28, 33, 38, 43, 48);
 UPDATE "canciones"
-SET "ocasion" = 'Dormir',
-    "clima" = 'Lluvioso',
-    "estadodeanimo" = 'Tranquilo'
+SET "ocasion_id" = 5,
+    "clima_id" = 3,
+    "estadodeanimo_id" = 5
 WHERE "id" IN (4, 9, 14, 19, 24, 29, 34, 39, 44, 49);
 UPDATE "canciones"
-SET "ocasion" = 'Meditar',
-    "clima" = 'Soleado',
-    "estadodeanimo" = 'Sereno'
+SET "ocasion_id" = 2,
+    "clima_id" = 2,
+    "estadodeanimo_id" = 2
 WHERE "id" IN (5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
 UPDATE "canciones"
-SET "ocasion" = 'Social',
-    "clima" = 'Despejado',
-    "estadodeanimo" = 'Animado'
+SET "ocasion_id" = 1,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 1
 WHERE "id" IN (51, 56, 61, 66, 71, 76, 81, 86, 91, 96);
 UPDATE "canciones"
-SET "ocasion" = 'Estudiar',
-    "clima" = 'Nublado',
-    "estadodeanimo" = 'Concentrado'
+SET "ocasion_id" = 9,
+    "clima_id" = 4,
+    "estadodeanimo_id" = 9
 WHERE "id" IN (52, 57, 62, 67, 72, 77, 82, 87, 92, 97);
 UPDATE "canciones"
-SET "ocasion" = 'Relajacion',
-    "clima" = 'Despejado',
-    "estadodeanimo" = 'Tranquilo'
+SET "ocasion_id" = 10,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 9
 WHERE "id" IN (53, 58, 63, 68, 73, 78, 83, 88, 93, 98);
 UPDATE "canciones"
-SET "ocasion" = 'Viajando',
-    "clima" = 'Soleado',
-    "estadodeanimo" = 'Aventurero'
+SET "ocasion_id" = 8,
+    "clima_id" = 2,
+    "estadodeanimo_id" = 7
 WHERE "id" IN (54, 59, 64, 69, 74, 79, 84, 89, 94, 99);
 UPDATE "canciones"
-SET "ocasion" = 'Jugando',
-    "clima" = 'Despejado',
-    "estadodeanimo" = 'Divertido'
+SET "ocasion_id" = 4,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 4
 WHERE "id" IN (55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+--@block
+UPDATE "canciones"
+SET "duracion" = TIME '2:10'
+WHERE "id" IN (1, 6, 11, 16, 21, 26, 31, 36, 41, 46);
+UPDATE "canciones"
+SET "duracion" = TIME '2:40'
+WHERE "id" IN (2, 7, 12, 17, 22, 27, 32, 37, 42, 47);
+UPDATE "canciones"
+SET "duracion" = TIME '3:20'
+WHERE "id" IN (3, 8, 13, 18, 23, 28, 33, 38, 43, 48);
+UPDATE "canciones"
+SET "duracion" = TIME '1:50'
+WHERE "id" IN (4, 9, 14, 19, 24, 29, 34, 39, 44, 49);
+UPDATE "canciones"
+SET "duracion" = TIME '2:46'
+WHERE "id" IN (5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
+UPDATE "canciones"
+SET "duracion" = TIME '3:30'
+WHERE "id" IN (51, 56, 61, 66, 71, 76, 81, 86, 91, 96);
+UPDATE "canciones"
+SET "duracion" = TIME '4:20'
+WHERE "id" IN (52, 57, 62, 67, 72, 77, 82, 87, 92, 97);
+UPDATE "canciones"
+SET "duracion" = TIME '1:59'
+WHERE "id" IN (53, 58, 63, 68, 73, 78, 83, 88, 93, 98);
+UPDATE "canciones"
+SET "duracion" = TIME '2:20'
+WHERE "id" IN (54, 59, 64, 69, 74, 79, 84, 89, 94, 99);
+UPDATE "canciones"
+SET "duracion" = TIME '2:59'
+WHERE "id" IN (55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+--@block
+INSERT INTO "genero" ("nombre")
+VALUES ('Funk'),
+    (2),
+    ('Hip-Hop'),
+    ('Country'),
+    (5),
+    (6),
+    ('Electrónica'),
+    ('R&B');
+INSERT INTO "estadodeanimo" ("nombre")
+VALUES ('Animado'),
+    ('Sereno'),
+    ('Feliz'),
+    ('Divertido'),
+    ('Tranquilo'),
+    ('Motivado'),
+    ('Aventurero'),
+    ('Relajado'),
+    ('Concentrado');
+INSERT INTO "ocasion" ("nombre")
+VALUES ('Social'),
+    ('Meditar'),
+    ('Celebracion'),
+    ('Jugando'),
+    ('Dormir'),
+    ('Ejercicio fisico'),
+    ('Viajando'),
+    ('Limpieza'),
+    ('Estudiar'),
+    ('Relajacion');
+INSERT INTO "clima" ("nombre")
+VALUES ('Despejado'),
+    ('Soleado'),
+    ('Lluvioso'),
+    ('Nublado');
