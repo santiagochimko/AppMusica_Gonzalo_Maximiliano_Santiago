@@ -1,16 +1,19 @@
 import React from 'react';
 import { useState } from 'react'
-import MatchScreen from './views/matchScreen'
+import MatchResult from './views/MatchResult'
 import './App.css'
 
 import Home from './views/Home';
+import BottomBar from './components/BottomBar';
 
 
 const App = () => {
   return (
     <>
       <div className="app">
-        <MatchScreen />
+        <BottomBar id="1"/>
+        <MatchResult />
+        
       </div> 
       
        {/* <div className="app">

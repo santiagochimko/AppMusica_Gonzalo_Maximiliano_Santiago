@@ -8,6 +8,19 @@
             "database": "proyecto_final",
             "username": "postgres",
             "name": "final"
+        },
+        {
+            "pgOptions": {
+                "ssl": true
+            },
+            "previewLimit": 50,
+            "server": "ep-tight-hill-04275720.us-east-2.aws.neon.tech",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "username": "GonBac",
+            "database": "proyecto_final",
+            "password": "dhrUuBFS8q6E",
+            "name": "ProyectoDB"
         }
     ]
 }
