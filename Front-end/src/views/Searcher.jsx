@@ -10,13 +10,13 @@ const Searcher = () => {
   const [isInputFocused, setInputFocused] = useState(false);
   const [showTop20, setShowTop20] = useState(true);
 
-const [showRecentSearches, setShowRecentSearches] = useState(false);
+  const [showRecentSearches, setShowRecentSearches] = useState(false);
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setSearchText(inputValue);
     setShowTop20(inputValue === ""); // Mostrar si el valor está vacío
-    
+
     setShowRecentSearches(inputValue !== "");
   };
 
@@ -30,38 +30,34 @@ const [showRecentSearches, setShowRecentSearches] = useState(false);
     setInputFocused(false);
   };
 
-  //   useEffect(() => {
-  //     // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTIwMjM3NTd9.vkRfYX43O-Bd-e5ng2Wxn9VmPrOnNZCNIT_zHzwSZGA"
-  //     // var requestOptions = {
-  //     //   method: "GET",
-  //     //   headers: {
-  //     //     "Content-Type": "application/json",
-  //     //     Authorization: `Bearer ${token}`,
-  //     //   },
-  //     //   redirect: "follow",
-  //     // };
-  //     var myHeaders = new Headers();
-  //     myHeaders.append("Content-Type", "application/json");
-  //     var requestOptions = {
-  //       method: "GET",
-  //       headers: myHeaders,
-  //       redirect: "follow",
-  //       credentials: "include",
-  //     };
+  useEffect(() => {
+   
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-  //     fetch("http://localhost:3000/user/canciones", requestOptions)
-  //       .then((response) => response.json()) // Parsea la respuesta como JSON
-  //       .then((data) => {
-  //         // `data` contiene los resultados de la respuesta
-  //         // Accede a los nombres de las canciones y los artistas
-  //         const canciones = data.canciones;
-  //         canciones.forEach((cancion) => {
-  //           console.log("Nombre de canción:", cancion.nombre);
-  //           console.log("Artista:", cancion.artista_id);
-  //         });
-  //       })
-  //       .catch((error) => console.log("error", error));
-  //   }, []);
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+      credentials: "include",
+    };
+
+    fetch("http://localhost:3000/user/canciones", requestOptions)
+      .then((response) => response.json()) // Parsea la respuesta como JSON
+      .then((data) => {
+       setSongs(data.canciones);
+
+        const canciones = data.canciones;
+        
+        canciones.forEach((cancion) => {
+          console.log("Nombre de canción:", cancion.nombre);
+          console.log("Artista:", cancion.artista_id);
+        });
+      })
+      .catch((error) => console.log("error", error));
+  }, []);
+
+
 
   return (
     <main id="main-searcher">
@@ -88,7 +84,10 @@ const [showRecentSearches, setShowRecentSearches] = useState(false);
           className="search-icon"
         />
       </div>
-      <section id="top-20" style={{ display: showRecentSearches ? "none" : "flex" }}>
+      <section
+        id="top-20"
+        style={{ display: showRecentSearches ? "none" : "flex" }}
+      >
         {showTop20 && (
           <>
             <div className="dividerContainer">
@@ -97,18 +96,18 @@ const [showRecentSearches, setShowRecentSearches] = useState(false);
             </div>
 
             <section className="songContainer">
-              {/* {songs.map((song) => (
+              {songs.map((song) => (
             <div className="songCard" key={song.id}>
               <img src="" alt="" />
               <h2 className="songTitle">{song.nombre}</h2>
               <h3 className="songArtist">{song.artista_id}</h3>
             </div>
-          ))}           */}
-              <div className="songCard">
+          ))}          
+              {/* <div className="songCard">
                 <img src="" alt="" />
                 <h2 className="songTitle">Cancion</h2>
                 <h3 className="songArtist">Artista</h3>
-              </div>
+              </div> */}
             </section>
           </>
         )}
