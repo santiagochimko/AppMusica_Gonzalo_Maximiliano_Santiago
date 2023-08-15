@@ -46,8 +46,10 @@ h2#searchTitle {
 .dividerContainer {
     display: flex;
     flex-direction: row;
+    width: 100%;
     align-items: center;
     gap: 16px;
+    justify-content: space-between;
 }
 
 .dividerContainer h2 {
@@ -62,6 +64,14 @@ h2#searchTitle {
     width: 240px;
     height: 2px;
     background: #E4E6E8;
+}
+
+#recent-searches .dividerContainer h2{
+width: 181px;
+}
+
+#recent-searches .divider{
+width: 123px;
 }
 
 .songContainer {

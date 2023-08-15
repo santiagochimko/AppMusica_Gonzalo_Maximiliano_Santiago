@@ -102,12 +102,7 @@ const Searcher = () => {
               <h2 className="songTitle">{song.nombre}</h2>
               <h3 className="songArtist">{song.artista_id}</h3>
             </div>
-          ))}          
-              {/* <div className="songCard">
-                <img src="" alt="" />
-                <h2 className="songTitle">Cancion</h2>
-                <h3 className="songArtist">Artista</h3>
-              </div> */}
+          ))}                        
             </section>
           </>
         )}
@@ -116,7 +111,10 @@ const Searcher = () => {
         id="recent-searches"
         style={{ display: showRecentSearches ? "flex" : "none" }} // Establecer estilo en línea para mostrar u ocultar
       >
-        <h1>HOLA</h1>
+        <div className="dividerContainer">
+              <h2>Búsquedas Recientes:</h2>
+              <div className="divider"></div>
+            </div>
       </section>
 
       <div className="btm-gradient"></div>
