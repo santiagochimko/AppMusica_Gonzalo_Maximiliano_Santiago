@@ -24,7 +24,7 @@ exports.login = async (req, res, next) => {
     return;
   }
 
-  sendToken(res, next, usuario.mail, usuario.nombre);
+  sendToken(res, next, usuario);
   res.json({ mensaje: "Ingreso de usuario correcto" });
 };
 

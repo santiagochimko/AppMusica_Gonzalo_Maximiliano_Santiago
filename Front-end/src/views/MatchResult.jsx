@@ -9,11 +9,14 @@ import singer4 from "../assets/artist/4.png";
 
 import Home from "./Home";
 import BottomBar from "../components/BottomBar";
-
+import { useNavigate } from 'react-router';
 
 const MatchResult = () => {
-  // const [data, setdata] = useState();
-
+  const navigate = useNavigate();
+  const handleHome = () => {
+    // Lógica para el botón de inicio de sesión
+    navigate (`/home`)
+};
   return (
     <div className="Card">
       <div className="header">
@@ -21,7 +24,8 @@ const MatchResult = () => {
         <div className="top-bar">
           <img
             src={arrow}
-            srcSet="" /*Dentro de srcSet crear vínculo para regresar a Home*//>
+            srcSet="" 
+            onClick={handleHome}/>
           <div className="titles">
             <h3> Generada del Cupido musical </h3>
             <h1>-Nombre de la playlist-</h1>
@@ -30,12 +34,12 @@ const MatchResult = () => {
         <div>Hamburger</div>
       </div>
 
-      <div className="singer">
-        {/*esto genera una foto que está subcompuesta por 4 fotos*/}
-        <img src={singer} className="singer2" />
-        <img src={singer2} className="singer2" />
-        <img src={singer3} className="singer3" />
-        <img src={singer4} className="singer2" />
+      <div className="ssinger">
+       
+        <img src={singer} className="ssinger2" />
+        <img src={singer2} className="ssinger2" />
+        <img src={singer3} className="ssinger3" />
+        <img src={singer4} className="ssinger2" />
       </div>
       <div className="actions-bar" >
         -icon- -verified- -share- -duration- -historial-

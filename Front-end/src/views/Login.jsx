@@ -5,8 +5,10 @@ import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import Button from "../Components/Button";
 import eyeSvg from "../assets/eye.svg";
 import eyeOpenSvg from "../assets/eye_open.svg";
+import { useNavigate } from 'react-router';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -27,6 +29,10 @@ const Login = () => {
 
   const isFormValid = !isUserNameEmpty && !isPasswordEmpty && isPasswordValid;
 
+  const handleHome = () => {
+    // Lógica para el botón de inicio de sesión
+    navigate (`/home`)
+  };  
   return (
     <main id="main-registration">
       <div className="top-gradient"></div>
@@ -66,7 +72,7 @@ const Login = () => {
       </div>
       
 
-      <Button className={`btn_continue ${isFormValid ? "valid-email" : ""}`} text="Continuar" disabled={!isFormValid} />
+      <Button className={`btn_continue ${isFormValid ? "valid-email" : ""}`} text="Continuar" disabled={!isFormValid} onClick={handleHome}/>
 
       <div className="btm-gradient"></div>
     </main>

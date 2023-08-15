@@ -79,7 +79,7 @@ const Searcher = () => {
       .then((data) => {
         setSongs(data.canciones);
 
-        const canciones = data.canciones;
+        // const canciones = data.canciones;
 
         // canciones.forEach((cancion) => {
         //   console.log("Nombre de canción:", cancion.nombre);

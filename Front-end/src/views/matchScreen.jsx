@@ -6,16 +6,26 @@ import cross from '../assets/cross.svg'
 import like from '../assets/like.svg'
 import singer from '../assets/artist/1.png'
 import singer2 from '../assets/artist/2.png'
+import { useNavigate } from 'react-router';
 
 const MatchScreen = () =>{
-    // const [data, setdata] = useState();
+    const navigate = useNavigate();
+    const handleHome = () => {
+        // Lógica para el botón de inicio de sesión
+        navigate (`/home`)
+    };
+    
+    const handlePlaylist = () => {
+        // Lógica para el botón de inicio de sesión
+        navigate (`/match_result`)
+    };  
     
     return (
         <div className="Card">  
             <div className="header">
                 <div className="Backgr-degrade"/>
                 <div className="top-bar">
-                    <img src={arrow} srcSet=""/*Dentro de srcSet crear vínculo para regresar a Home*//> 
+                    <img src={arrow} srcSet="" onClick={handleHome}/> 
                     <h1> Cupido musical </h1>
                 </div>
             </div>
@@ -29,7 +39,7 @@ const MatchScreen = () =>{
                 </div>
                 <h2>titulo de la canción</h2> {/*Aquí se debe conectar la BD con un fetch para devolver el nombre de la canción*/}
             </div>
-            <button className="playlist-button"> 
+            <button className="playlist-button" onClick={handlePlaylist}> 
                 Crear Playlist
             </button>
         </div>              
