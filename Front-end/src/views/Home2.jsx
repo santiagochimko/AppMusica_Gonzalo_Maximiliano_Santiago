@@ -9,9 +9,11 @@ import question from '../assets/question.svg'
 import bell from '../assets/bell.svg'
 import vector from '../assets/Vector.svg'
 
+import { useNavigate } from 'react-router';
+
 
 const Home2 = () =>{
-    
+    const navigate = useNavigate();
     return (
         <div className="Card">  
             <div className="header">

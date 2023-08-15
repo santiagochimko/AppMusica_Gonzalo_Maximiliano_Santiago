@@ -5,8 +5,10 @@ import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import Button from "../Components/Button";
 import eyeSvg from "../assets/eye.svg";
 import eyeOpenSvg from "../assets/eye_open.svg";
+import { useNavigate } from 'react-router';
 
 const RegistrationStep2 = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
@@ -26,6 +28,10 @@ const RegistrationStep2 = () => {
     setPassword(newPassword);
     setIsPasswordValid(newPassword.length >= 8);
   };
+  const handleLogin = () => {
+    // Lógica para el botón de inicio de sesión
+    navigate (`/login`)
+  };  
 
   return (
     <main id="main-registration">
@@ -92,6 +98,7 @@ const RegistrationStep2 = () => {
         }`}
         text="Continuar"
         disabled={!userName || !isPasswordValid || !isChecked}
+        onClick={handleLogin}
       />
 
       <div className="btm-gradient"></div>

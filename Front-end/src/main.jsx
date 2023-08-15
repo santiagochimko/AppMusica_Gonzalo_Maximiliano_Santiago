@@ -6,6 +6,7 @@ import "./styles/index.css";
 import Registration from "./views/Registration.jsx"
 import RegistrationStep2 from "./views/RegistrationStep2.jsx"
 import Login from "./views/Login.jsx";
+import Home2 from "./views/Home2.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/home",
+    element: <Home2 />,
   },
   
 ]);
