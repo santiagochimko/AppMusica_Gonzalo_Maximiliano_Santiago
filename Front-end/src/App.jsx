@@ -1,19 +1,18 @@
 import React from 'react';
 import { useState } from 'react'
-import MatchResult from './views/MatchResult'
+
 import './App.css'
 
 import Home from './views/Home';
-import BottomBar from './components/BottomBar';
+import MatchResult from './views/MatchResult'
+import Home2 from './views/Home2';
 
 
 const App = () => {
   return (
     <>
       <div className="app">
-        <BottomBar id="1"/>
-        <MatchResult />
-        
+       <Home2 />
       </div> 
       
        {/* <div className="app">
