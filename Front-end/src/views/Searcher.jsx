@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Searcher.css";
-import { Link } from "react-router-dom";
 import searchIcon from "../assets/search.svg";
 import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import BottomBar from "../components/BottomBar";
-import i from "../assets/albumfoto/1.jpg";
 
 const Searcher = () => {
   const [searchText, setSearchText] = useState("");
@@ -165,14 +163,14 @@ const Searcher = () => {
           {recentSearches.map((song) => (
             <div className="songCard" key={song.id}>
               <img
-                    src={
-                      new URL(
-                        `../assets/albumfoto/${song.album_id}.jpg`,
-                        import.meta.url
-                      )
-                    }
-                    alt={`Este album pertenece a: ${song.artista}`}
-                  />
+                src={
+                  new URL(
+                    `../assets/albumfoto/${song.album_id}.jpg`,
+                    import.meta.url
+                  )
+                }
+                alt={`Este album pertenece a: ${song.artista}`}
+              />
               <h2 className="songTitle">{song.nombre}</h2>
               <h3 className="songArtist">{song.artista}</h3>
             </div>

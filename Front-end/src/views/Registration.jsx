@@ -15,7 +15,7 @@ const Registration = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setIsValidEmail(newEmail === "" ? false : emailPattern.test(newEmail));
   };
-
+  
   return (
     <main id="main-registration">
       <div className="top-gradient"></div>
@@ -37,11 +37,17 @@ const Registration = () => {
         onChange={handleEmailChange}
       />
       <p className="msj_alert">Deberás poder confirmarlo luego.</p>
-      <Link className="btn_placer" to={isValidEmail ? "/registration_step_2" : ""}>
+      <Link
+        className="btn_placer"
+        to={isValidEmail ? "/registration_step_2" : ""}
+      >
         <Button
           className={`btn_continue ${isValidEmail ? "valid-email" : ""}`}
           text="Continuar"
           disabled={!isValidEmail}
+          onClick={() => {
+            localStorage.setItem("mail", email);
+          }}
         />
       </Link>
       <div className="btm-gradient"></div>
