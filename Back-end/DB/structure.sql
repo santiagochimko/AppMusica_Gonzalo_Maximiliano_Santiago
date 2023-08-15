@@ -1,6 +1,5 @@
 CREATE TABLE "playlists"(
     "id" SERIAL PRIMARY KEY,
-    "cancion_id" INTEGER NOT NULL,
     "usuario_id" INTEGER NOT NULL,
     "nombre" VARCHAR(255) NOT NULL
 );
