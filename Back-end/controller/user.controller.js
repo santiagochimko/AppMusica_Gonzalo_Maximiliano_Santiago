@@ -3,8 +3,21 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 exports.traerCanciones = async (req, res) => {
-  const canciones = await knex.select("*").from("canciones");
-  res.status(200).json({ canciones });
+  try {
+    const canciones = await knex("canciones")
+      .select(
+        "canciones.nombre",
+        "artistas.nombre as artista",
+        "albums.nombrealbum as album",
+        "albums.fotoalbum"
+      )
+      .leftJoin("artistas", "canciones.artista_id", "artistas.id")
+      .leftJoin("albums", "canciones.album_id", "albums.id");
+    res.status(200).json({ canciones });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Hubo un error al obtener las canciones." });
+  }
 };
 
 exports.traerFiltros = async (req, res) => {

@@ -12,13 +12,17 @@ const Searcher = () => {
   const [showTop20, setShowTop20] = useState(true);
 
   const [showRecentSearches, setShowRecentSearches] = useState(false);
+ 
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setSearchText(inputValue);
-    setShowTop20(inputValue === ""); // Mostrar si el valor está vacío
+    setShowTop20(inputValue === "");
 
+    
     setShowRecentSearches(inputValue !== "");
+
+    
   };
 
   const handleInputFocus = () => {
@@ -32,7 +36,6 @@ const Searcher = () => {
   };
 
   useEffect(() => {
-   
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -46,19 +49,17 @@ const Searcher = () => {
     fetch("http://localhost:3000/user/canciones", requestOptions)
       .then((response) => response.json()) // Parsea la respuesta como JSON
       .then((data) => {
-       setSongs(data.canciones);
+        setSongs(data.canciones);
 
         const canciones = data.canciones;
-        
+
         canciones.forEach((cancion) => {
           console.log("Nombre de canción:", cancion.nombre);
-          console.log("Artista:", cancion.artista_id);
+          console.log("Artista:", cancion.artista);
         });
       })
       .catch((error) => console.log("error", error));
   }, []);
-
-
 
   return (
     <main id="main-searcher">
@@ -98,12 +99,15 @@ const Searcher = () => {
 
             <section className="songContainer">
               {songs.map((song) => (
-            <div className="songCard" key={song.id}>
-              <img src="" alt="" />
-              <h2 className="songTitle">{song.nombre}</h2>
-              <h3 className="songArtist">{song.artista_id}</h3>
-            </div>
-          ))}                        
+                <div className="songCard" key={song.id}>
+                  <img
+                    src={song.fotoalbum}
+                    alt={`Este album pertenece a: ${song.artista}`}
+                  />
+                  <h2 className="songTitle">{song.nombre}</h2>
+                  <h3 className="songArtist">{song.artista}</h3>
+                </div>
+              ))}
             </section>
           </>
         )}
@@ -113,11 +117,12 @@ const Searcher = () => {
         style={{ display: showRecentSearches ? "flex" : "none" }} // Establecer estilo en línea para mostrar u ocultar
       >
         <div className="dividerContainer">
-              <h2>Búsquedas Recientes:</h2>
-              <div className="divider"></div>
-            </div>
+          <h2>Búsquedas Recientes:</h2>
+          <div className="divider"></div>
+        </div>
+       
       </section>
-    <BottomBar/>
+      <BottomBar />
       <div className="btm-gradient"></div>
     </main>
   );
