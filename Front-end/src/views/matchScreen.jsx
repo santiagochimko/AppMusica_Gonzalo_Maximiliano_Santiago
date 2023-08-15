@@ -32,14 +32,8 @@ const MatchScreen = () =>{
             <button className="playlist-button"> 
                 Crear Playlist
             </button>
-        </div>
-        
-
-        
+        </div>              
     );   
-        
-        
-        
 };
 
 export default MatchScreen;
