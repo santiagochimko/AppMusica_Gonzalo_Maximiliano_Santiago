@@ -6,8 +6,7 @@ CREATE TABLE "playlists"(
 CREATE TABLE "albums"(
     "id" SERIAL PRIMARY KEY,
     "artista_id" INTEGER NOT NULL,
-    "nombrealbum" VARCHAR(255) NOT NULL,
-    "fotoalbum" BIGINT NOT NULL
+    "nombrealbum" VARCHAR(255) NOT NULL
 );
 CREATE TABLE "canciones"(
     "id" SERIAL PRIMARY KEY,
@@ -35,8 +34,7 @@ CREATE TABLE "usuarios"(
 CREATE TABLE "artistas"(
     "id" SERIAL PRIMARY KEY,
     "nombre" VARCHAR(255) NOT NULL,
-    "genero_id" INTEGER,
-    "fotoartista" BIGINT NOT NULL
+    "genero_id" INTEGER
 );
 CREATE TABLE "genero" (
     "id" SERIAL PRIMARY KEY,
