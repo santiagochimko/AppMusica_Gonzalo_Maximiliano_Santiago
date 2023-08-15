@@ -9,7 +9,7 @@ exports.traerCanciones = async (req, res) => {
         "canciones.nombre",
         "artistas.nombre as artista",
         "albums.nombrealbum as album",
-        "albums.fotoalbum"
+        "canciones.album_id"
       )
       .leftJoin("artistas", "canciones.artista_id", "artistas.id")
       .leftJoin("albums", "canciones.album_id", "albums.id");

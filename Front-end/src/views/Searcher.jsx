@@ -4,25 +4,20 @@ import { Link } from "react-router-dom";
 import searchIcon from "../assets/search.svg";
 import arrowLeftImage from "../assets/left-icon-placeholder.svg";
 import BottomBar from "../components/BottomBar";
+import i from "../assets/albumfoto/1.jpg";
 
 const Searcher = () => {
   const [searchText, setSearchText] = useState("");
   const [songs, setSongs] = useState([]);
   const [isInputFocused, setInputFocused] = useState(false);
   const [showTop20, setShowTop20] = useState(true);
-
   const [showRecentSearches, setShowRecentSearches] = useState(false);
- 
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setSearchText(inputValue);
     setShowTop20(inputValue === "");
-
-    
     setShowRecentSearches(inputValue !== "");
-
-    
   };
 
   const handleInputFocus = () => {
@@ -53,10 +48,10 @@ const Searcher = () => {
 
         const canciones = data.canciones;
 
-        canciones.forEach((cancion) => {
-          console.log("Nombre de canción:", cancion.nombre);
-          console.log("Artista:", cancion.artista);
-        });
+        // canciones.forEach((cancion) => {
+        //   console.log("Nombre de canción:", cancion.nombre);
+        //   console.log("Artista:", cancion.artista);
+        // });
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -101,7 +96,8 @@ const Searcher = () => {
               {songs.map((song) => (
                 <div className="songCard" key={song.id}>
                   <img
-                    src={song.fotoalbum}
+                    src={new URL(`../assets/albumfoto/${song.album_id}.jpg`, import.meta.url)}
+
                     alt={`Este album pertenece a: ${song.artista}`}
                   />
                   <h2 className="songTitle">{song.nombre}</h2>
@@ -120,7 +116,6 @@ const Searcher = () => {
           <h2>Búsquedas Recientes:</h2>
           <div className="divider"></div>
         </div>
-       
       </section>
       <BottomBar />
       <div className="btm-gradient"></div>
