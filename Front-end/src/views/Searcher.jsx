@@ -64,9 +64,11 @@ const Searcher = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/user/canciones");
-        const data = await response.json();
-        setSongs(data.canciones);
+        // const header = newHeader;
+        console.log(document.cookie)
+        // const response = await fetch("http://localhost:3000/user/canciones", {headers: {Cookie:document.cookie}});
+        // const data = await response.json();
+        // setSongs(data.canciones);
       } catch (error) {
         console.log("Error fetching data:", error);
       }
