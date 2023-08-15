@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import "./App.css";
-import Home from "./views/Home";
-import MatchScreen from "./views/matchScreen";
-import Searcher from "./views/Searcher";
+import React from 'react';
+import { useState, useEffect } from 'react'
+import MatchResult from './views/MatchResult'
+import './App.css'
+import Home from './views/Home';
+import BottomBar from './components/BottomBar';
+import Searcher from './views/Searcher';
+
 
 const App = () => {
   const [user, setUser] = useState ();
@@ -36,6 +38,12 @@ const App = () => {
   return (
     <>
       {/* <div className="app">
+        <BottomBar id="1"/>
+        <MatchResult />
+        
+      </div>  */}
+      
+       {/* <div className="app">
         <Home />
       </div> */}
       {/* <MatchScreen /> */}

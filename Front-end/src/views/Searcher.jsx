@@ -3,6 +3,7 @@ import "../styles/Searcher.css";
 import { Link } from "react-router-dom";
 import searchIcon from "../assets/search.svg";
 import arrowLeftImage from "../assets/left-icon-placeholder.svg";
+import BottomBar from "../components/BottomBar";
 
 const Searcher = () => {
   const [searchText, setSearchText] = useState("");
@@ -116,7 +117,7 @@ const Searcher = () => {
               <div className="divider"></div>
             </div>
       </section>
-
+    <BottomBar/>
       <div className="btm-gradient"></div>
     </main>
   );
