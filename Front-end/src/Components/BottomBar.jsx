@@ -4,20 +4,35 @@ import home from "../assets/home.svg";
 import search from "../assets/search.svg";
 import user from "../assets/user.svg";
 import friends from "../assets/friends.svg";
-
+import { useNavigate } from 'react-router';
 
 const BottomBar = () =>{
+    const navigate = useNavigate();
+    const handleHome = () => {
+            // Lógica para el botón de inicio de sesión
+            navigate (`/home`)
+    };
+    const handleSearch = () => {
+        // Lógica para el botón de inicio de sesión
+        navigate (`/searcher`)
+    };
 
     return(
+        
+
+
+
     <div className="bottom-bar">
         <button className="bottom-buttons">
-            <img src={home} alt="" />
+            <img src={home} alt="" onClick={handleHome} />
             Inicio
         </button>
+
         <button className="bottom-buttons">
-            <img src={search} alt="" />
+            <img src={search} alt="" onClick={handleSearch}/>
             Buscar
         </button>
+
         <button className="bottom-buttons">
             <img src={user} alt="" />
             Usuario

@@ -14,6 +14,16 @@ import { useNavigate } from 'react-router';
 
 const Home2 = () =>{
     const navigate = useNavigate();
+
+    const handleCupid = () => {
+        // Lógica para el botón de inicio de sesión
+        navigate (`/match_screen`)
+    };
+    // const handleMatch = () => {
+    //     // Lógica para el botón de inicio de sesión
+    //     navigate (`/match_screen`)
+    // };  
+
     return (
         <div className="Card">  
             <div className="header">
@@ -27,25 +37,26 @@ const Home2 = () =>{
                 </div>
             </div>
 
-            <div className="playlists-type"> 
+            <div className="playlists-type" onClick={handleCupid}> 
                 <div className="imgs">
                     <img src={headphones} alt="" />
                     <img src={cherub} alt="" className="img2"/>
                 </div>
                 <div className="playlists-info">
-                    <h2>Música Contextual</h2>
-                    <p>Creamos una playlist perfecta para cualquier situación.</p>
+                    <h2>Cupido Musical</h2>
+                    <p>Tus artistas favoritos nunca te van a dejar con el corazón roto.</p>
                 </div>
             </div>
 
-            <div className="playlists-type">
+            <div className="playlists-type" > {/*acá link Santi */}
                 <div className="imgs2">
                     <img src={map} alt="" className="img1"/>
                     <img src={question} alt="" className="img2"/>
                 </div>
                 <div className="playlists-info">
-                    <h2>Cupido Musical</h2>
-                    <p>Tus artistas favoritos nunca te van a dejar con el corazón roto.</p>
+                    <h2>Música Contextual</h2>
+                    <p>Creamos una playlist perfecta para cualquier situación.</p>
+                    
                 </div>
             </div>
                 
