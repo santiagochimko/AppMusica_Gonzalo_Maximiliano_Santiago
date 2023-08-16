@@ -21,7 +21,7 @@ const MatchScreen = () =>{
     };  
     
     return (
-        <div className="Card">  
+        <main className="Card">  
             <div className="header">
                 <div className="Backgr-degrade"/>
                 <div className="top-bar">
@@ -42,7 +42,7 @@ const MatchScreen = () =>{
             <button className="playlist-button" onClick={handlePlaylist}> 
                 Crear Playlist
             </button>
-        </div>              
+        </main>              
     );   
 };
 

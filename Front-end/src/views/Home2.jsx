@@ -25,7 +25,7 @@ const Home2 = () =>{
     // };  
 
     return (
-        <div className="Card">  
+        <main className="Card">  
             <div className="header">
                 <div className="Backgr-degrade"/>
                 <div className="top-bar">
@@ -62,7 +62,7 @@ const Home2 = () =>{
                 
 
             <BottomBar/>
-        </div>
+        </main>
         
         
     );         
