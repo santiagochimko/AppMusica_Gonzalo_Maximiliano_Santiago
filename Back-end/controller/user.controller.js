@@ -48,7 +48,7 @@ exports.traerFiltros = async (req, res) => {
   }
 };
 
-exports.crearListaFiltros = async (req, res) => {
+exports.crearContextual = async (req, res) => {
   try {
     const { nombreLista, generoID, estadoID, ocasionID, climaID } = req.body;
     const usuarioID = req.usuario.id;
@@ -88,4 +88,33 @@ exports.crearListaFiltros = async (req, res) => {
   }
 };
 
-// exports.crearListaContextual
+exports.crearCupido = async (req, res) => {
+  try {
+    const { nombreLista, artistaID } = req.body;
+    const usuarioID = req.usuario.id;
+
+    const playlist = await knex("playlists")
+      .insert({
+        nombre: nombreLista,
+        usuario_id: usuarioID,
+      })
+      .returning("id");
+
+    const cancionesFiltradas = await knex("canciones")
+      .select("id")
+      .whereIn("artista_id", artistaID);
+
+    await Promise.all(
+      cancionesFiltradas.map(async (cancion) => {
+        await knex("playlists_canciones").insert({
+          playlist_id: playlist[0].id,
+          cancion_id: cancion.id,
+        });
+      })
+    );
+
+    return res.status(200).json({ mensaje: "Lista creada perfectamente" });
+  } catch (error) {
+    return res.status(500).json({ error: "Error al crear la playlist" });
+  }
+};
