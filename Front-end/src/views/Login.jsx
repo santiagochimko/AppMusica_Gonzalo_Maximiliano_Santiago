@@ -29,10 +29,40 @@ const Login = () => {
 
   const isFormValid = !isUserNameEmpty && !isPasswordEmpty && isPasswordValid;
 
+  // const handleHome = () => {
+  //   // Lógica para el botón de inicio de sesión
+  //   navigate (`/home`)
+  // };  
+  
   const handleHome = () => {
-    // Lógica para el botón de inicio de sesión
-    navigate (`/home`)
-  };  
+    if (isFormValid) {
+      const userData = {
+        nombre: userName,
+        contrasenia: password,
+      };
+
+      fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Authentication successful, navigate to home or perform any other action
+            navigate("/home");
+          } else {
+            // Authentication failed, handle the error here
+            console.error("Authentication failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error occurred while logging in:", error);
+        });
+    }
+  };
+
   return (
     <main id="main-registration">
       <div className="top-gradient"></div>

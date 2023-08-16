@@ -28,27 +28,38 @@ const RegistrationStep2 = () => {
     setPassword(newPassword);
     setIsPasswordValid(newPassword.length >= 8);
   };
-  const handleLogin = async () => {
-    // Lógica para el botón de inicio de sesión
-    const requestOptions = {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify({
+  
+  const handleLogin = () => {
+    if (userName && isPasswordValid && isChecked) {
+      const email = localStorage.getItem("mail");
+  
+      const userData = {
         nombre: userName,
         contrasenia: password,
-        mail: localStorage.getItem("mail"),
-      }),
-    };
-    await fetch("http://localhost:3000/auth/register", requestOptions)
-      .then((response) => {
-        if (response.status == 200) {
-          navigate(`/login`);
-        }
-
-        return response.json();
+        mail: email,
+      };
+  
+      fetch("http://localhost:3000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
       })
-
-      .then((response) => console.log(response));
+        .then((response) => {
+          if (response.ok) {
+            // Registration successful, navigate to login page or perform any other action
+            navigate("/login");
+            localStorage.removeItem("mail");
+          } else {
+            // Registration failed, handle the error here
+            console.error("Registration failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error occurred while registering:", error);
+        });
+    }
   };
 
   return (
