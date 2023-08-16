@@ -16,13 +16,11 @@ const Home2 = () =>{
     const navigate = useNavigate();
 
     const handleCupid = () => {
-        // Lógica para el botón de inicio de sesión
         navigate (`/match_screen`)
     };
-    // const handleMatch = () => {
-    //     // Lógica para el botón de inicio de sesión
-    //     navigate (`/match_screen`)
-    // };  
+    const handleContextual = () => {
+        navigate (`/musica_contextual`)
+    };  
 
     return (
         <main className="Card">  
@@ -48,7 +46,7 @@ const Home2 = () =>{
                 </div>
             </div>
 
-            <div className="playlists-type" > {/*acá link Santi */}
+            <div className="playlists-type" onClick={handleContextual}> 
                 <div className="imgs2">
                     <img src={map} alt="" className="img1"/>
                     <img src={question} alt="" className="img2"/>
