@@ -55,8 +55,6 @@ const Searcher = () => {
 
   const handleInputFocus = () => {
     setInputFocused(true);
-
-    // setShowRecentSearches(true);
   };
 
   const handleInputBlur = () => {
@@ -64,29 +62,19 @@ const Searcher = () => {
   };
 
   useEffect(() => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-      credentials: "include",
+    const fetchData = async () => {
+      try {
+        // const header = newHeader;
+        console.log(document.cookie)
+        const response = await fetch("http://localhost:3000/user/canciones", {credentials: 'include'});
+        const data = await response.json();
+        setSongs(data.canciones);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
     };
 
-    fetch("http://localhost:3000/user/canciones", requestOptions)
-      .then((response) => response.json()) // Parsea la respuesta como JSON
-      .then((data) => {
-        setSongs(data.canciones);
-
-        // const canciones = data.canciones;
-
-        // canciones.forEach((cancion) => {
-        //   console.log("Nombre de canción:", cancion.nombre);
-        //   console.log("Artista:", cancion.artista);
-        // });
-      })
-      .catch((error) => console.log("error", error));
+    fetchData();
   }, []);
 
   return (
@@ -116,7 +104,7 @@ const Searcher = () => {
 
         <img
           src={searchText || isInputFocused ? arrowLeftImage : searchIcon}
-          alt="Icono"
+          alt="Ícono"
           className="search-icon"
         />
       </div>
@@ -132,20 +120,20 @@ const Searcher = () => {
             </div>
 
             <section className="songContainer">
-              {songs.map((song) => (
-                <div className="songCard" key={song.id}>
-                  <img
-                    src={
-                      new URL(
-                        `../assets/albumfoto/${song.album_id}.jpg`,
-                        import.meta.url
-                      )
-                    }
-                    alt={`Este album pertenece a: ${song.artista}`}
-                  />
-                  <h2 className="songTitle">{song.nombre}</h2>
-                  <h3 className="songArtist">{song.artista}</h3>
-                </div>
+              {songs?.map((song) => (
+               <div className="songCard" key={song.id}>
+                <img
+                 src={
+                   new URL(
+                     `../assets/albumfoto/${song.album_id}.jpg`,
+                     import.meta.url
+                   )
+                 }
+                 alt={`Este album pertenece a: ${song.artista}`}
+               />
+               <h2 className="songTitle">{song.nombre}</h2>
+               <h3 className="songArtist">{song.artista}</h3>
+             </div>
               ))}
             </section>
           </>
@@ -160,20 +148,20 @@ const Searcher = () => {
           <div className="divider"></div>
         </div>
         <section className="songContainer">
-          {recentSearches.map((song) => (
+          {recentSearches?.map((song) => (
             <div className="songCard" key={song.id}>
-              <img
-                src={
-                  new URL(
-                    `../assets/albumfoto/${song.album_id}.jpg`,
-                    import.meta.url
-                  )
-                }
-                alt={`Este album pertenece a: ${song.artista}`}
-              />
-              <h2 className="songTitle">{song.nombre}</h2>
-              <h3 className="songArtist">{song.artista}</h3>
-            </div>
+            <img
+              src={
+                new URL(
+                  `../assets/albumfoto/${song.album_id}.jpg`,
+                  import.meta.url
+                )
+              }
+              alt={`Este album pertenece a: ${song.artista}`}
+            />
+            <h2 className="songTitle">{song.nombre}</h2>
+            <h3 className="songArtist">{song.artista}</h3>
+          </div>
           ))}
         </section>
       </section>
