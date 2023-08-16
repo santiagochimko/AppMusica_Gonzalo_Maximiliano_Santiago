@@ -19,11 +19,11 @@ const ContextualMusic = () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow",
-        credentials: "include",
-      };
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+      credentials: "include",
+    };
 
     fetch("http://localhost:3000/user/filtros", requestOptions)
       .then((response) => response.json())
@@ -38,17 +38,17 @@ const ContextualMusic = () => {
       });
   }, []);
 
-// Function to handle genre button clicks
-const handleGenreClick = (genre) => {
+  const handleGenreClick = (genre) => {
     if (selectedGenres.includes(genre)) {
-      setSelectedGenres(prevGenres => prevGenres.filter((g) => g !== genre));
+      setSelectedGenres((prevGenres) =>
+        prevGenres.filter((selected) => selected !== genre)
+      );
     } else {
       if (selectedGenres.length < 3) {
-        setSelectedGenres(prevGenres => [...prevGenres, genre]);
+        setSelectedGenres((prevGenres) => [...prevGenres, genre]);
       }
     }
   };
-  
 
   return (
     <main id="main-searcher">
@@ -99,7 +99,9 @@ const handleGenreClick = (genre) => {
           {selectedGenres.map((genre) => (
             <button
               key={genre}
-              className={`label ${selectedGenres.includes(genre) ? "selected" : ""}`}
+              className={`label ${
+                selectedGenres.includes(genre) ? "selected" : ""
+              }`}
               onClick={() => handleGenreClick(genre)}
               style={{
                 backgroundColor: selectedGenres.includes(genre) ? "black" : "",
