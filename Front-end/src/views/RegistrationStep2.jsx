@@ -50,6 +50,7 @@ const RegistrationStep2 = () => {
           if (response.ok) {
             // Registration successful, navigate to login page or perform any other action
             navigate("/login");
+            localStorage.removeItem("mail");
           } else {
             // Registration failed, handle the error here
             console.error("Registration failed");
