@@ -5,7 +5,7 @@ VALUES (1, 'Beyoncé', 8, 123456),
     (2, 'Ed Sheeran', 5, 789012),
     (3, 'Rihanna', 8, 345678),
     (4, 'Michael Jackson', 5, 901234),
-    (5, 'Taylor Swift', 'Country', 567890),
+    (5, 'Taylor Swift', 4, 567890),
     (6, 'Bruno Mars', 8, 234567),
     (7, 'Adele', 2, 678901),
     (8, 'Drake', 3, 345678),
@@ -129,9 +129,6 @@ INSERT INTO "canciones" (
 VALUES (38, 2, 5, 5, 'Photograph'),
     (39, 2, 4, 5, 'Galway Girl'),
     (40, 2, 5, 5, 'Perfect'),
-    (41, 2, 4, 5, 'Castle on the Hill'),
-    (42, 2, 4, 5, 'Shape of You'),
-    (43, 2, 5, 5, 'Thinking Out Loud'),
     (44, 2, 5, 5, 'I See Fire');
 -- Canciones adicionales para Rihanna
 INSERT INTO "canciones" (
@@ -216,8 +213,7 @@ VALUES (66, 6, 12, 8, 'Grenade'),
         1,
         'Versace on the Floor'
     ),
-    (72, 6, 13, 1, 'Uptown Funk');
--- Canciones adicionales para Adele
+    -- Canciones adicionales para Adele
 INSERT INTO "canciones" (
         "id",
         "artista_id",
@@ -228,9 +224,6 @@ INSERT INTO "canciones" (
 VALUES (73, 7, 16, 2, 'Set Fire to the Rain'),
     (74, 7, 15, 2, 'Turning Tables'),
     (75, 7, 15, 2, 'Rumour Has It'),
-    (76, 7, 16, 2, 'Someone Like You'),
-    (77, 7, 15, 2, 'Rolling in the Deep'),
-    (78, 7, 16, 2, 'Hello'),
     (79, 7, 16, 2, 'When We Were Young');
 -- Canciones adicionales para Drake
 INSERT INTO "canciones" (
@@ -276,10 +269,8 @@ INSERT INTO "canciones" (
         "genero_id",
         "nombre"
     )
-VALUES (94, 10, 24, 6, 'Fix You'),
-    (95, 10, 23, 6, 'Clocks'),
+VALUES (95, 10, 23, 6, 'Clocks'),
     (96, 10, 23, 6, 'The Scientist'),
-    (97, 10, 24, 6, 'Viva la Vida'),
     (
         98,
         10,
@@ -287,8 +278,53 @@ VALUES (94, 10, 24, 6, 'Fix You'),
         6,
         'Adventure of a Lifetime'
     ),
-    (99, 10, 23, 'Rock', 'Yellow'),
-    (100, 10, 23, 'Rock', 'In My Place');
+    (100, 10, 23, 6, 'In My Place');
+--@block
+UPDATE "canciones"
+SET "estadodeanimo_id" = 6,
+    "clima_id" = 2,
+    "ocasion_id" = 7
+WHERE "id" IN (1, 6, 11, 16, 21, 26, 31, 36, 41, 46);
+UPDATE "canciones"
+SET "ocasion_id" = 8,
+    "clima_id" = 4,
+    "estadodeanimo_id" = 8
+WHERE "id" IN (2, 7, 12, 17, 22, 27, 32, 37, 42, 47);
+UPDATE "canciones"
+SET "ocasion_id" = 3,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 3
+WHERE "id" IN (3, 8, 13, 18, 23, 28, 33, 38, 43, 48);
+UPDATE "canciones"
+SET "ocasion_id" = 5,
+    "clima_id" = 3,
+    "estadodeanimo_id" = 5
+WHERE "id" IN (4, 9, 14, 19, 24, 29, 34, 39, 44, 49);
+UPDATE "canciones"
+SET "ocasion_id" = 2,
+    "clima_id" = 2,
+    "estadodeanimo_id" = 2
+WHERE "id" IN (5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
+UPDATE "canciones"
+SET "ocasion_id" = 1,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 1
+WHERE "id" IN (51, 56, 61, 66, 71, 76, 81, 86, 91, 96);
+UPDATE "canciones"
+SET "ocasion_id" = 9,
+    "clima_id" = 4,
+    "estadodeanimo_id" = 9
+WHERE "id" IN (52, 57, 62, 67, 72, 77, 82, 87, 92, 97);
+UPDATE "canciones"
+SET "ocasion_id" = 10,
+    "clima_id" = 1,
+    "estadodeanimo_id" = 9
+WHERE "id" IN (53, 58, 63, 68, 73, 78, 83, 88, 93, 98);
+UPDATE "canciones"
+SET "ocasion_id" = 8,
+    "clima_id" = 2,
+    "estadodeanimo_id" = 7
+WHERE "id" IN (54, 59, 64, 69, 74, 79, 84, 89, 94, 99);
 UPDATE "canciones"
 SET "ocasion_id" = 4,
     "clima_id" = 1,
@@ -296,34 +332,34 @@ SET "ocasion_id" = 4,
 WHERE "id" IN (55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
 --@block
 UPDATE "canciones"
-SET "duracion" = TIME '2:10'
+SET "duracion" = 130
 WHERE "id" IN (1, 6, 11, 16, 21, 26, 31, 36, 41, 46);
 UPDATE "canciones"
-SET "duracion" = TIME '2:40'
+SET "duracion" = 160
 WHERE "id" IN (2, 7, 12, 17, 22, 27, 32, 37, 42, 47);
 UPDATE "canciones"
-SET "duracion" = TIME '3:20'
+SET "duracion" = 200
 WHERE "id" IN (3, 8, 13, 18, 23, 28, 33, 38, 43, 48);
 UPDATE "canciones"
-SET "duracion" = TIME '1:50'
+SET "duracion" = 110
 WHERE "id" IN (4, 9, 14, 19, 24, 29, 34, 39, 44, 49);
 UPDATE "canciones"
-SET "duracion" = TIME '2:46'
+SET "duracion" = 166
 WHERE "id" IN (5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
 UPDATE "canciones"
-SET "duracion" = TIME '3:30'
+SET "duracion" = 210
 WHERE "id" IN (51, 56, 61, 66, 71, 76, 81, 86, 91, 96);
 UPDATE "canciones"
-SET "duracion" = TIME '4:20'
+SET "duracion" = 260
 WHERE "id" IN (52, 57, 62, 67, 72, 77, 82, 87, 92, 97);
 UPDATE "canciones"
-SET "duracion" = TIME '1:59'
+SET "duracion" = 119
 WHERE "id" IN (53, 58, 63, 68, 73, 78, 83, 88, 93, 98);
 UPDATE "canciones"
-SET "duracion" = TIME '2:20'
+SET "duracion" = 140
 WHERE "id" IN (54, 59, 64, 69, 74, 79, 84, 89, 94, 99);
 UPDATE "canciones"
-SET "duracion" = TIME '2:59'
+SET "duracion" = 179
 WHERE "id" IN (55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
 --@block
 INSERT INTO "genero" ("nombre")
