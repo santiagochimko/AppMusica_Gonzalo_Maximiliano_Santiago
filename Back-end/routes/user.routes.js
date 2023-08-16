@@ -2,8 +2,9 @@ const express = require("express");
 const {
   traerCanciones,
   traerFiltros,
-  crearListaFiltros,
   traerArtistas,
+  crearContextual,
+  crearCupido,
 } = require("../controller/user.controller");
 const userRoutes = express.Router();
 
@@ -16,7 +17,10 @@ userRoutes.get("/artistas", traerArtistas);
 //Traer filtros
 userRoutes.get("/filtros", traerFiltros);
 
-//crear playlist
-userRoutes.post("/crearlista", crearListaFiltros);
+//crear playlist de filtros
+userRoutes.post("/contextual", crearContextual);
+
+//crear playlist de contextual
+userRoutes.post("/cupido", crearCupido);
 
 module.exports = userRoutes;

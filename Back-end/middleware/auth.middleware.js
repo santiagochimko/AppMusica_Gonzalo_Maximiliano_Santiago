@@ -10,7 +10,6 @@ exports.authMiddleWare = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, secret);
-    console.log(payload);
     req.usuario = payload;
   } catch (e) {
     if (e.name === "JsonWebTokenError") {
