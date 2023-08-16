@@ -66,9 +66,9 @@ const Searcher = () => {
       try {
         // const header = newHeader;
         console.log(document.cookie)
-        // const response = await fetch("http://localhost:3000/user/canciones", {headers: {Cookie:document.cookie}});
-        // const data = await response.json();
-        // setSongs(data.canciones);
+        const response = await fetch("http://localhost:3000/user/canciones", {credentials: 'include'});
+        const data = await response.json();
+        setSongs(data.canciones);
       } catch (error) {
         console.log("Error fetching data:", error);
       }
@@ -120,17 +120,20 @@ const Searcher = () => {
             </div>
 
             <section className="songContainer">
-              {songs.map((song) => (
-                <div className="songCard" key={song.id}>
-                  <img
-                    src={
-                      require(`../assets/albumfoto/${song.album_id}.jpg`)
-                    }
-                    alt={`Portada del álbum de: ${song.artista}`}
-                  />
-                  <h2 className="songTitle">{song.nombre}</h2>
-                  <h3 className="songArtist">{song.artista}</h3>
-                </div>
+              {songs?.map((song) => (
+               <div className="songCard" key={song.id}>
+                <img
+                 src={
+                   new URL(
+                     `../assets/albumfoto/${song.album_id}.jpg`,
+                     import.meta.url
+                   )
+                 }
+                 alt={`Este album pertenece a: ${song.artista}`}
+               />
+               <h2 className="songTitle">{song.nombre}</h2>
+               <h3 className="songArtist">{song.artista}</h3>
+             </div>
               ))}
             </section>
           </>
@@ -145,17 +148,20 @@ const Searcher = () => {
           <div className="divider"></div>
         </div>
         <section className="songContainer">
-          {recentSearches.map((song) => (
+          {recentSearches?.map((song) => (
             <div className="songCard" key={song.id}>
-              <img
-                src={
-                  require(`../assets/albumfoto/${song.album_id}.jpg`)
-                }
-                alt={`Portada del álbum de: ${song.artista}`}
-              />
-              <h2 className="songTitle">{song.nombre}</h2>
-              <h3 className="songArtist">{song.artista}</h3>
-            </div>
+            <img
+              src={
+                new URL(
+                  `../assets/albumfoto/${song.album_id}.jpg`,
+                  import.meta.url
+                )
+              }
+              alt={`Este album pertenece a: ${song.artista}`}
+            />
+            <h2 className="songTitle">{song.nombre}</h2>
+            <h3 className="songArtist">{song.artista}</h3>
+          </div>
           ))}
         </section>
       </section>

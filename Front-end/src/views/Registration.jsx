@@ -15,7 +15,7 @@ const Registration = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setIsValidEmail(newEmail === "" ? false : emailPattern.test(newEmail));
   };
-  
+
   return (
     <main id="main-registration">
       <div className="top-gradient"></div>
