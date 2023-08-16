@@ -9,87 +9,53 @@ const ContextualMusic = () => {
     navigate(`/home`);
   };
 
-  const [selectedOption, setSelectedOption] = useState("");
-  const options = [
-    "Ejercicio Físico",
-    "Limpieza",
-    "Celebración",
-    "Dormir",
-    "Meditar",
-    "Social",
-    "Estudiar",
-    "Relajación",
-    "Viajando",
-  ];
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  const [selectedMood, setSelectedMood] = useState("");
-  const moods = [
-    "Animado",
-    "Sereno",
-    "Feliz",
-    "Divertido",
-    "Tranquilo",
-    "Motivado",
-    "Aventurero",
-    "Relajado",
-    "Concentrado",
-  ];
-
-  const handleMoodChange = (event) => {
-    setSelectedMood(event.target.value);
-  };
-
-  const [selectedWeather, setSelectedWeather] = useState("");
-  const weatherOptions = ["Despejado", "Soleado", "Lluvioso", "Nublado"];
-
-  const handleWeatherChange = (event) => {
-    setSelectedWeather(event.target.value);
-  };
-
+  const [occasionOptions, setOccasionOptions] = useState([]);
+  const [moodOptions, setMoodOptions] = useState([]);
+  const [weatherOptions, setWeatherOptions] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
 
-  const genres = [
-    "Rock",
-    "Country",
-    "Soul",
-    "Jazz",
-    "Blues",
-    "Hip-Hop",
-    "Pop",
-    "Reggae",
-    "Folk",
-    "R&B",
-    "Clásico",
-    "Alternativo",
-    "EDM",
-    "Electrónica",
-    "Disco",
-    "New Age",
-    "Punk",
-  ];
+  useEffect(() => {
+    // Fetch filter options from the backend
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+        credentials: "include",
+      };
 
-  const handleGenreClick = (genre) => {
+    fetch("http://localhost:3000/user/filtros", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        setOccasionOptions(data.ocasion);
+        setMoodOptions(data.estado);
+        setWeatherOptions(data.clima);
+        setSelectedGenres(data.genero);
+      })
+      .catch((error) => {
+        console.error("Error fetching filter options:", error);
+      });
+  }, []);
+
+// Function to handle genre button clicks
+const handleGenreClick = (genre) => {
     if (selectedGenres.includes(genre)) {
-      setSelectedGenres(
-        selectedGenres.filter((selected) => selected !== genre)
-      );
+      setSelectedGenres(prevGenres => prevGenres.filter((g) => g !== genre));
     } else {
       if (selectedGenres.length < 3) {
-        setSelectedGenres([...selectedGenres, genre]);
+        setSelectedGenres(prevGenres => [...prevGenres, genre]);
       }
     }
   };
+  
 
   return (
     <main id="main-searcher">
       <div className="top-gradient"></div>
       <div className="header">
         <div className="top-bar">
-          <img src={arrow} srcSet="" onClick={handleHome} />
+          <img src={arrow} srcSet="" onClick={handleHome} alt="Go Home" />
           <h1> Música Contextual </h1>
         </div>
       </div>
@@ -98,50 +64,42 @@ const ContextualMusic = () => {
       <input type="text" name="" id="" />
 
       <label htmlFor="">¿Cual es la ocasión?:</label>
-      <select id="task" value={selectedOption} onChange={handleOptionChange}>
+      <select>
         <option value="">Seleccionar...</option>
-        {options.map((option) => (
+        {occasionOptions.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
       </select>
-      {/* {selectedOption && <p>Ha seleccionado: {selectedOption}</p>} */}
 
       <label htmlFor="">¿Cómo te sientes?:</label>
-      <select id="mood" value={selectedMood} onChange={handleMoodChange}>
-        <option value="">Estado de Ánimo</option>
-        {moods.map((mood) => (
-          <option key={mood} value={mood}>
-            {mood}
+      <select>
+        <option value="">Seleccionar...</option>
+        {moodOptions.map((option) => (
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
       </select>
-      {/* {selectedMood && <p>Su estado de ánimo seleccionado: {selectedMood}</p>} */}
 
       <label htmlFor="">¿Cómo está el clima?:</label>
-      <select
-        id="weather"
-        value={selectedWeather}
-        onChange={handleWeatherChange}
-      >
-        <option value="">Clima</option>
+      <select>
+        <option value="">Seleccionar...</option>
         {weatherOptions.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
       </select>
-      {/* {selectedWeather && <p>Clima seleccionado: {selectedWeather}</p>} */}
+
       <section id="labels">
         <h1>Selecciona hasta 3 géneros:</h1>
         <div id="labels-container">
-          {genres.map((genre) => (
+          {selectedGenres.map((genre) => (
             <button
               key={genre}
-              className={`label ${
-                selectedGenres.includes(genre) ? "selected" : ""
-              }`}
+              className={`label ${selectedGenres.includes(genre) ? "selected" : ""}`}
               onClick={() => handleGenreClick(genre)}
               style={{
                 backgroundColor: selectedGenres.includes(genre) ? "black" : "",
