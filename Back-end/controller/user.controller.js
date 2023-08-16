@@ -15,8 +15,16 @@ exports.traerCanciones = async (req, res) => {
       .leftJoin("albums", "canciones.album_id", "albums.id");
     res.status(200).json({ canciones });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "Hubo un error al obtener las canciones." });
+  }
+};
+
+exports.traerArtistas = async (req, res) => {
+  try {
+    const artistas = await knex("artistas").select("*");
+    res.status(200).json({ artistas });
+  } catch (error) {
+    res.status(500).json({ error: "Hubo un error al obtener los artistas." });
   }
 };
 
@@ -40,28 +48,44 @@ exports.traerFiltros = async (req, res) => {
   }
 };
 
-exports.crearLista = async (req, res) => {
+exports.crearListaFiltros = async (req, res) => {
   try {
-    const { nombreLista, cancionesFront } = req.body;
+    const { nombreLista, generoID, estadoID, ocasionID, climaID } = req.body;
     const usuarioID = req.usuario.id;
+
     const playlist = await knex("playlists")
       .insert({
         nombre: nombreLista,
         usuario_id: usuarioID,
       })
       .returning("id");
+
+    const cancionesFiltradas = await knex("canciones")
+      .select("id")
+      .where("genero_id", generoID)
+      .andWhere("estadodeanimo_id", estadoID)
+      .andWhere("ocasion_id", ocasionID)
+      .andWhere("clima_id", climaID);
+
+    if (cancionesFiltradas.length === 0) {
+      return res
+        .status(400)
+        .json({ error: "No existe esa combinacion de canciones" });
+    }
+
     await Promise.all(
-      cancionesFront.map(async (cancionID) => {
+      cancionesFiltradas.map(async (cancion) => {
         await knex("playlists_canciones").insert({
           playlist_id: playlist[0].id,
-          cancion_id: cancionID,
+          cancion_id: cancion.id,
         });
       })
     );
 
-    res.status(200).json({ mensaje: "Playlist creada exitosamente." });
+    return res.status(200).json({ playlist: "Lista creada perfectamente" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Hubo un error al crear la playlist." });
+    return res.status(500).json({ error: "Error al crear la playlist" });
   }
 };
+
+// exports.crearListaContextual
