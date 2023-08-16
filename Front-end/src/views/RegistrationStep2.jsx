@@ -28,10 +28,39 @@ const RegistrationStep2 = () => {
     setPassword(newPassword);
     setIsPasswordValid(newPassword.length >= 8);
   };
+
   const handleLogin = () => {
-    // Lógica para el botón de inicio de sesión
-    navigate (`/login`)
-  };  
+    if (userName && isPasswordValid && isChecked) {
+      const email = localStorage.getItem("mail");
+  
+      const userData = {
+        nombre: userName,
+        contrasenia: password,
+        mail: email,
+      };
+  
+      fetch("http://localhost:3000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Registration successful, navigate to login page or perform any other action
+            navigate("/login");
+          } else {
+            // Registration failed, handle the error here
+            console.error("Registration failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error occurred while registering:", error);
+        });
+    }
+  };
+  
 
   return (
     <main id="main-registration">
