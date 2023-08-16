@@ -16,6 +16,10 @@ const BottomBar = () =>{
         // Lógica para el botón de inicio de sesión
         navigate (`/searcher`)
     };
+    const handleProfile = () => {
+        // Lógica para el botón de inicio de sesión
+        navigate (`/user_profile`)
+    };
 
     return(
         
@@ -34,7 +38,7 @@ const BottomBar = () =>{
         </button>
 
         <button className="bottom-buttons">
-            <img src={user} alt="" />
+            <img src={user} alt="" onClick={handleProfile}/>
             Usuario
         </button>
         <button className="bottom-buttons">
