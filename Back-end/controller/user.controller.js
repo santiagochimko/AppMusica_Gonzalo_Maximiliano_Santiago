@@ -1,6 +1,4 @@
 const { knex } = require("../DB/knexfile.js");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 
 exports.traerCanciones = async (req, res) => {
   try {
@@ -69,16 +67,14 @@ exports.crearContextual = async (req, res) => {
         .json({ error: "No existe esa combinacion de canciones" });
     }
 
-    await Promise.all(
-      cancionesFiltradas.map(async (cancion) => {
-        await knex("playlists_canciones").insert({
-          playlist_id: playlist[0].id,
-          cancion_id: cancion.id,
-        });
-      })
-    );
+    const relacionesCanciones = cancionesFiltradas.map((cancion) => ({
+      playlist_id: playlist[0].id,
+      cancion_id: cancion.id,
+    }));
 
-    return res.status(200).json({ playlist: "Lista creada perfectamente" });
+    await knex("playlists_canciones").insert(relacionesCanciones);
+
+    return res.status(200).json({ mensaje: "Lista creada perfectamente" });
   } catch (error) {
     return res.status(500).json({ error: "Error al crear la playlist" });
   }
@@ -100,17 +96,30 @@ exports.crearCupido = async (req, res) => {
       .select("id")
       .whereIn("artista_id", artistaID);
 
-    await Promise.all(
-      cancionesFiltradas.map(async (cancion) => {
-        await knex("playlists_canciones").insert({
-          playlist_id: playlist[0].id,
-          cancion_id: cancion.id,
-        });
-      })
-    );
+    const relacionesCanciones = cancionesFiltradas.map((cancion) => ({
+      playlist_id: playlist[0].id,
+      cancion_id: cancion.id,
+    }));
+
+    await knex("playlists_canciones").insert(relacionesCanciones);
 
     return res.status(200).json({ mensaje: "Lista creada perfectamente" });
   } catch (error) {
     return res.status(500).json({ error: "Error al crear la playlist" });
+  }
+};
+
+exports.traerPlaylists = async (req, res) => {
+  try {
+    const usuarioID = req.usuario.id;
+
+    const playlists = await knex("playlists")
+      .select("playlists.nombre", "usuarios.nombre as usuario")
+      .leftJoin("usuarios", "playlists.usuario_id", "usuarios.id")
+      .where("playlists.usuario_id", usuarioID);
+
+    res.status(200).json({ playlists });
+  } catch (error) {
+    res.status(500).json({ error: "Hubo un error al obtener las playlists." });
   }
 };
