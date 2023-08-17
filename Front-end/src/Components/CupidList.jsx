@@ -156,6 +156,11 @@ const CupidList = () => {
             />
             ))}
         </div>
+
+        <input type="text" placeholder="Nombre de la playlist" onChange={(e)=>{setListName(e.target.value)}}/>
+        <button onClick={handleCreatePlaylist}>
+            Crear playlist
+        </button>
     </div>
     
   );

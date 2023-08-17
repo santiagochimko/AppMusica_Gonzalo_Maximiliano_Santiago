@@ -53,17 +53,17 @@ const ContextualMusic = () => {
       setSelectedGenreOptions((prevGenres) => [...prevGenres, genre]);
     }
   };
-  
+
   const handleCreatePlaylist = async () => {
     try {
       const userData = {
         nombreLista: playlistName,
         ocasionID: selectedOccasion,
-        estadoID:selectedMood,
-        climaID:selectedWeather,
-        generoID: selectedGenreOptions      
+        estadoID: selectedMood,
+        climaID: selectedWeather,
+        generoID: selectedGenreOptions,
       };
-  
+
       const response = await fetch("http://localhost:3000/user/contextual", {
         method: "POST",
         headers: {
@@ -72,13 +72,13 @@ const ContextualMusic = () => {
         body: JSON.stringify(userData),
         credentials: "include",
       });
-  
+
       const responseData = await response.json();
-  
+
       if (response.ok) {
         console.log("Playlist creada exitosamente");
       } else {
-        console.log("Error al crear:", responseData.error); 
+        console.log("Error al crear:", responseData.error);
       }
     } catch (error) {
       console.log("Error:", error);
@@ -97,42 +97,51 @@ const ContextualMusic = () => {
 
       <label htmlFor="">Nombre Playlist:</label>
       <input
-      type="text"
-      name=""
-      id=""
-      value={playlistName}
-      onChange={(e) => setPlaylistName(e.target.value)}
-    />
+        type="text"
+        name=""
+        id=""
+        value={playlistName}
+        onChange={(e) => setPlaylistName(e.target.value)}
+      />
 
       <label htmlFor="">¿Cual es la ocasión?:</label>
-      <select value={selectedOccasion} onChange={(e) => setSelectedOccasion(e.target.value)}>
-      <option value="">Seleccionar...</option>
-      {occasionOptions.map((option, index) => (
-        <option key={`occasion-${index}`} value={option.id}>
-          {option.nombre}
-        </option>
-      ))}
-    </select>
+      <select
+        value={selectedOccasion}
+        onChange={(e) => setSelectedOccasion(e.target.value)}
+      >
+        <option value="">Seleccionar...</option>
+        {occasionOptions.map((option, index) => (
+          <option key={`occasion-${index}`} value={option.id}>
+            {option.nombre}
+          </option>
+        ))}
+      </select>
 
       <label htmlFor="">¿Cómo te sientes?:</label>
-      <select value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
-      <option value="">Seleccionar...</option>
-      {moodOptions.map((option, index) => (
-        <option key={`mood-${index}`} value={option.id}>
-          {option.nombre}
-        </option>
-      ))}
-    </select>
+      <select
+        value={selectedMood}
+        onChange={(e) => setSelectedMood(e.target.value)}
+      >
+        <option value="">Seleccionar...</option>
+        {moodOptions.map((option, index) => (
+          <option key={`mood-${index}`} value={option.id}>
+            {option.nombre}
+          </option>
+        ))}
+      </select>
 
       <label htmlFor="">¿Cómo está el clima?:</label>
-      <select value={selectedWeather} onChange={(e) => setSelectedWeather(e.target.value)}>
-      <option value="">Seleccionar...</option>
-      {weatherOptions.map((option, index) => (
-        <option key={`weather-${index}`} value={option.id}>
-          {option.nombre}
-        </option>
-      ))}
-    </select>
+      <select
+        value={selectedWeather}
+        onChange={(e) => setSelectedWeather(e.target.value)}
+      >
+        <option value="">Seleccionar...</option>
+        {weatherOptions.map((option, index) => (
+          <option key={`weather-${index}`} value={option.id}>
+            {option.nombre}
+          </option>
+        ))}
+      </select>
 
       <section id="labels">
         <h1>Selecciona hasta 3 géneros:</h1>
@@ -156,7 +165,11 @@ const ContextualMusic = () => {
           ))}
         </div>
       </section>
-      <Button id="btnPlaylist" text="Crear Playlist" onClick={handleCreatePlaylist}/>
+      <Button
+        id="btnPlaylist"
+        text="Crear Playlist"
+        onClick={handleCreatePlaylist}
+      />
     </main>
   );
 };
