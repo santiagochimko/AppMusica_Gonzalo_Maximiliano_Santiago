@@ -108,3 +108,18 @@ exports.crearCupido = async (req, res) => {
     return res.status(500).json({ error: "Error al crear la playlist" });
   }
 };
+
+exports.traerPlaylists = async (req, res) => {
+  try {
+    const usuarioID = req.usuario.id;
+
+    const playlists = await knex("playlists")
+      .select("playlists.nombre", "usuarios.nombre as usuario")
+      .leftJoin("usuarios", "playlists.usuario_id", "usuarios.id")
+      .where("playlists.usuario_id", usuarioID);
+
+    res.status(200).json({ playlists });
+  } catch (error) {
+    res.status(500).json({ error: "Hubo un error al obtener las playlists." });
+  }
+};
