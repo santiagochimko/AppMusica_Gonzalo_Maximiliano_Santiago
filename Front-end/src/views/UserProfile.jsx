@@ -36,7 +36,26 @@ const UserProfile = () => {
       });
   }, []);
 
-  console.log(profileData);
+  const handleLogout = () => {
+    var requestOptions = {
+      method: "GET",
+      credentials: "include",
+    };
+  
+    fetch("http://localhost:3000/auth/logout", requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          // Logout successful, manually redirect
+          window.location.href = "/"; // Redirect to the root URL
+        } else {
+          console.error("Logout failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during logout:", error);
+      });
+  };
+  
 
   return (
     <main id="main-searcher">
@@ -44,7 +63,7 @@ const UserProfile = () => {
       <header id="profile-header">
         <div className="profile-container">
           <img src={fotoPerfil} alt="foto de perfil" />
-          <button>
+          <button  onClick={handleLogout}>
             <img src={cogwheel} alt="icono configuracion" />
           </button>
         </div>
