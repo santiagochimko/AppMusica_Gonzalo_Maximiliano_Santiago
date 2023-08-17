@@ -2,12 +2,11 @@ import React from "react";
 // import { useEffect, useState } from "react";
 import '../styles/matchScreen.css'
 import arrow from '../assets/left-icon-placeholder.svg'
-import { useNavigate } from 'react-router';
 import CupidList from '../components/CupidList'
 
 
 const MatchScreen = () =>{
-    const navigate = useNavigate();
+    
     const handleHome = () => {
         // Lógica para el botón de inicio de sesión
         navigate (`/home`)
