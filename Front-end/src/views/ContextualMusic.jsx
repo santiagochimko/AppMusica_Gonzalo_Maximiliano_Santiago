@@ -12,7 +12,9 @@ const ContextualMusic = () => {
   const [occasionOptions, setOccasionOptions] = useState([]);
   const [moodOptions, setMoodOptions] = useState([]);
   const [weatherOptions, setWeatherOptions] = useState([]);
-  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [selectedGenreOptions, setSelectedGenreOptions] = useState([]);
+  const [genreOptions, setGenreOptions] = useState([]);
+  
 
   useEffect(() => {
     // Fetch filter options from the backend
@@ -30,8 +32,8 @@ const ContextualMusic = () => {
       .then((data) => {
         setOccasionOptions(data.ocasion);
         setMoodOptions(data.estado);
-        setWeatherOptions(data.clima);
-        setSelectedGenres(data.genero);
+        setWeatherOptions(data.clima);        
+        setGenreOptions(data.genero);
       })
       .catch((error) => {
         console.error("Error fetching filter options:", error);
@@ -39,14 +41,12 @@ const ContextualMusic = () => {
   }, []);
 
   const handleGenreClick = (genre) => {
-    if (selectedGenres.includes(genre)) {
-      setSelectedGenres((prevGenres) =>
+    if (selectedGenreOptions.includes(genre)) {
+        setSelectedGenreOptions((prevGenres) =>
         prevGenres.filter((selected) => selected !== genre)
       );
-    } else {
-      if (selectedGenres.length < 3) {
-        setSelectedGenres((prevGenres) => [...prevGenres, genre]);
-      }
+    } else if (selectedGenreOptions.length < 3) {
+        setSelectedGenreOptions((prevGenres) => [...prevGenres, genre]);
     }
   };
 
@@ -96,16 +96,14 @@ const ContextualMusic = () => {
       <section id="labels">
         <h1>Selecciona hasta 3 géneros:</h1>
         <div id="labels-container">
-          {selectedGenres.map((genre) => (
+          {genreOptions.map((genre) => (
             <button
               key={genre}
-              className={`label ${
-                selectedGenres.includes(genre) ? "selected" : ""
-              }`}
+              className={`label ${selectedGenreOptions.includes(genre) ? "selected" : ""}`}
               onClick={() => handleGenreClick(genre)}
               style={{
-                backgroundColor: selectedGenres.includes(genre) ? "black" : "",
-                color: selectedGenres.includes(genre) ? "white" : "",
+                backgroundColor: selectedGenreOptions.includes(genre) ? "black" : "",
+                color: selectedGenreOptions.includes(genre) ? "white" : "",
               }}
             >
               {genre}

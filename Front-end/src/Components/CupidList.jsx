@@ -13,7 +13,7 @@ const CupidList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3001/user/artistas", {
+        const response = await fetch("http://localhost:3000/user/artistas", {
           credentials: "include",
         });
         const data = await response.json();
@@ -33,7 +33,7 @@ const CupidList = () => {
         artistaID: likedArtists,
       };
   
-      const response = await fetch("http://localhost:3001/user/cupido", {
+      const response = await fetch("http://localhost:3000/user/cupido", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,10 +42,12 @@ const CupidList = () => {
         credentials: "include",
       });
   
+      const responseData = await response.json();
+  
       if (response.ok) {
         console.log("Playlist creada exitosamente");
       } else {
-        console.log("Error al crear");
+        console.log("Error al crear:", responseData.error); // Cambia "error" por el campo correcto en la respuesta del servidor
       }
     } catch (error) {
       console.log("Error:", error);
