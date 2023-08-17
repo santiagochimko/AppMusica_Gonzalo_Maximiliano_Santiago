@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ContextualMusic.css";
 import arrow from "../assets/left-icon-placeholder.svg";
+import Button from "../Components/Button";
 import { useNavigate } from "react-router";
 
 const ContextualMusic = () => {
@@ -14,10 +15,8 @@ const ContextualMusic = () => {
   const [weatherOptions, setWeatherOptions] = useState([]);
   const [selectedGenreOptions, setSelectedGenreOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
-  
 
   useEffect(() => {
-    // Fetch filter options from the backend
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
@@ -32,7 +31,7 @@ const ContextualMusic = () => {
       .then((data) => {
         setOccasionOptions(data.ocasion);
         setMoodOptions(data.estado);
-        setWeatherOptions(data.clima);        
+        setWeatherOptions(data.clima);
         setGenreOptions(data.genero);
       })
       .catch((error) => {
@@ -42,11 +41,11 @@ const ContextualMusic = () => {
 
   const handleGenreClick = (genre) => {
     if (selectedGenreOptions.includes(genre)) {
-        setSelectedGenreOptions((prevGenres) =>
+      setSelectedGenreOptions((prevGenres) =>
         prevGenres.filter((selected) => selected !== genre)
       );
     } else if (selectedGenreOptions.length < 3) {
-        setSelectedGenreOptions((prevGenres) => [...prevGenres, genre]);
+      setSelectedGenreOptions((prevGenres) => [...prevGenres, genre]);
     }
   };
 
@@ -66,9 +65,9 @@ const ContextualMusic = () => {
       <label htmlFor="">¿Cual es la ocasión?:</label>
       <select>
         <option value="">Seleccionar...</option>
-        {occasionOptions.map((option) => (
-          <option key={option} value={option}>
-            {option}
+        {occasionOptions.map((option, index) => (
+          <option key={`occasion-${index}`} value={option.id}>
+            {option.nombre}
           </option>
         ))}
       </select>
@@ -76,9 +75,9 @@ const ContextualMusic = () => {
       <label htmlFor="">¿Cómo te sientes?:</label>
       <select>
         <option value="">Seleccionar...</option>
-        {moodOptions.map((option) => (
-          <option key={option} value={option}>
-            {option}
+        {moodOptions.map((option, index) => (
+          <option key={`mood-${index}`} value={option.id}>
+            {option.nombre}
           </option>
         ))}
       </select>
@@ -86,9 +85,9 @@ const ContextualMusic = () => {
       <label htmlFor="">¿Cómo está el clima?:</label>
       <select>
         <option value="">Seleccionar...</option>
-        {weatherOptions.map((option) => (
-          <option key={option} value={option}>
-            {option}
+        {weatherOptions.map((option, index) => (
+          <option key={`weather-${index}`} value={option.id}>
+            {option.nombre}
           </option>
         ))}
       </select>
@@ -96,23 +95,26 @@ const ContextualMusic = () => {
       <section id="labels">
         <h1>Selecciona hasta 3 géneros:</h1>
         <div id="labels-container">
-          {genreOptions.map((genre) => (
+          {genreOptions.map((genre, index) => (
             <button
-              key={genre}
-              className={`label ${selectedGenreOptions.includes(genre) ? "selected" : ""}`}
-              onClick={() => handleGenreClick(genre)}
+              key={`genre-${index}`}
+              className={`label ${
+                selectedGenreOptions.includes(genre.nombre) ? "selected" : ""
+              }`}
+              onClick={() => handleGenreClick(genre.id)}
               style={{
-                backgroundColor: selectedGenreOptions.includes(genre) ? "black" : "",
-                color: selectedGenreOptions.includes(genre) ? "white" : "",
+                backgroundColor: selectedGenreOptions.includes(genre.id)
+                  ? "black"
+                  : "",
+                color: selectedGenreOptions.includes(genre.id) ? "white" : "",
               }}
             >
-              {genre}
+              {genre.nombre}
             </button>
           ))}
         </div>
       </section>
-
-      <div className="btm-gradient"></div>
+      <Button id="btnPlaylist" text="Crear Playlist" />
     </main>
   );
 };

@@ -48,3 +48,9 @@ select {
     background-color: #26262E;
     color: white;
   }
+  #btnPlaylist{
+   background-color: #FF8E0A;
+   border: none;
+   color: white;
+   margin-top: 36px;
+  }
