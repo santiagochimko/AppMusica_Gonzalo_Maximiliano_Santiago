@@ -10,6 +10,8 @@ import Home2 from "./views/Home2.jsx";
 import MatchScreen from "./views/matchScreen.jsx";
 import MatchResult from "./views/MatchResult.jsx";
 import Searcher from "./views/Searcher.jsx";
+import UserProfile from "./views/UserProfile.jsx";
+import ContextualMusic from "./views/ContextualMusic.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: "/searcher",
     element: <Searcher/>,
+  },
+  {
+    path: "/user_profile",
+    element: <UserProfile/>,
+  },
+  {
+    path: "/musica_contextual",
+    element: <ContextualMusic/>,
   },
   
 ]);

@@ -42,10 +42,12 @@ const CupidList = () => {
         credentials: "include",
       });
   
+      const responseData = await response.json();
+  
       if (response.ok) {
         console.log("Playlist creada exitosamente");
       } else {
-        console.log("Error al crear");
+        console.log("Error al crear:", responseData.error); // Cambia "error" por el campo correcto en la respuesta del servidor
       }
     } catch (error) {
       console.log("Error:", error);
