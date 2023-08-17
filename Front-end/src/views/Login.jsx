@@ -21,7 +21,7 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    setIsPasswordValid(newPassword.length >= 8);
+    setIsPasswordValid(newPassword.length >= 1);
   };
 
   const isUserNameEmpty = userName.trim() === "";
@@ -41,12 +41,14 @@ const Login = () => {
         contrasenia: password,
       };
 
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");  
+
       fetch("http://localhost:3000/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: myHeaders,
         body: JSON.stringify(userData),
+        credentials: "include"
       })
         .then((response) => {
           if (response.ok) {

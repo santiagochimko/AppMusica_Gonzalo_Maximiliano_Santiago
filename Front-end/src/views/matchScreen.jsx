@@ -3,10 +3,10 @@ import React from "react";
 import '../styles/matchScreen.css'
 import arrow from '../assets/left-icon-placeholder.svg'
 import CupidList from '../components/CupidList'
-
+import { useNavigate } from "react-router";
 
 const MatchScreen = () =>{
-    
+    const navigate = useNavigate();
     const handleHome = () => {
         // Lógica para el botón de inicio de sesión
         navigate (`/home`)
