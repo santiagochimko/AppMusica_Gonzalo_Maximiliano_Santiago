@@ -21,7 +21,7 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    setIsPasswordValid(newPassword.length >= 1);
+    setIsPasswordValid(newPassword.length >= 8);
   };
 
   const isUserNameEmpty = userName.trim() === "";

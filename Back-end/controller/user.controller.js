@@ -47,13 +47,6 @@ exports.crearContextual = async (req, res) => {
     const { nombreLista, generoID, estadoID, ocasionID, climaID } = req.body;
     const usuarioID = req.usuario.id;
 
-    const playlist = await knex("playlists")
-      .insert({
-        nombre: nombreLista,
-        usuario_id: usuarioID,
-      })
-      .returning("id");
-
     const cancionesFiltradas = await knex("canciones")
       .select("id")
       .whereIn("genero_id", generoID)
@@ -62,10 +55,15 @@ exports.crearContextual = async (req, res) => {
       .andWhere("clima_id", climaID);
 
     if (cancionesFiltradas.length === 0) {
-      return res
-        .status(400)
-        .json({ error: "No existe esa combinacion de canciones" });
+      return res.status(400).json({ error: "No existe esa combinacion de canciones" });
     }
+
+    const playlist = await knex("playlists")
+      .insert({
+        nombre: nombreLista,
+        usuario_id: usuarioID,
+      })
+      .returning("id");
 
     const relacionesCanciones = cancionesFiltradas.map((cancion) => ({
       playlist_id: playlist[0].id,

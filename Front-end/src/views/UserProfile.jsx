@@ -8,27 +8,34 @@ import singer2 from "../assets/artist/2.png";
 import singer3 from "../assets/artist/3.png";
 import singer4 from "../assets/artist/4.png";
 
-const UserProfile = () => {
-  
-  const [perfil, setPerfil] = useState([]);
+const UserProfile = () => {  
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/user/perfil", {
-          credentials: "include",
-        });
-        const data = await response.json();
-        setPerfil(data.perfil);
+const [profileData, setProfileData] = useState({
+  name: "",
+  username: ""
+});
 
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      }
-    };
+useEffect(() => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+    credentials: "include",
+  };
 
-    fetchData();
-  }, []);
-console.log(perfil);
+  fetch("http://localhost:3000/user/perfil", requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      setProfileData(data.playlists);    
+    })
+    .catch((error) => {
+      console.error("Error fetching filter options:", error);
+    });
+}, []);
+
+console.log(profileData);
 
   return (
     <main id="main-searcher">
