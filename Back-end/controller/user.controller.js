@@ -1,6 +1,4 @@
 const { knex } = require("../DB/knexfile.js");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 
 exports.traerCanciones = async (req, res) => {
   try {
@@ -30,17 +28,13 @@ exports.traerArtistas = async (req, res) => {
 
 exports.traerFiltros = async (req, res) => {
   try {
-    const filtrosgen = await knex.select("nombre").from("genero");
-    const genero = filtrosgen.map((filtro) => filtro.nombre);
+    const genero = await knex.select("*").from("genero");
 
-    const filtroestado = await knex.select("nombre").from("estadodeanimo");
-    const estado = filtroestado.map((filtro) => filtro.nombre);
+    const estado = await knex.select("*").from("estadodeanimo");
 
-    const filtrooca = await knex.select("nombre").from("ocasion");
-    const ocasion = filtrooca.map((filtro) => filtro.nombre);
+    const ocasion = await knex.select("*").from("ocasion");
 
-    const filtroclima = await knex.select("nombre").from("clima");
-    const clima = filtroclima.map((filtro) => filtro.nombre);
+    const clima = await knex.select("*").from("clima");
 
     res.status(200).json({ genero, estado, ocasion, clima });
   } catch (error) {
@@ -73,16 +67,14 @@ exports.crearContextual = async (req, res) => {
         .json({ error: "No existe esa combinacion de canciones" });
     }
 
-    await Promise.all(
-      cancionesFiltradas.map(async (cancion) => {
-        await knex("playlists_canciones").insert({
-          playlist_id: playlist[0].id,
-          cancion_id: cancion.id,
-        });
-      })
-    );
+    const relacionesCanciones = cancionesFiltradas.map((cancion) => ({
+      playlist_id: playlist[0].id,
+      cancion_id: cancion.id,
+    }));
 
-    return res.status(200).json({ playlist: "Lista creada perfectamente" });
+    await knex("playlists_canciones").insert(relacionesCanciones);
+
+    return res.status(200).json({ mensaje: "Lista creada perfectamente" });
   } catch (error) {
     return res.status(500).json({ error: "Error al crear la playlist" });
   }
@@ -104,14 +96,12 @@ exports.crearCupido = async (req, res) => {
       .select("id")
       .whereIn("artista_id", artistaID);
 
-    await Promise.all(
-      cancionesFiltradas.map(async (cancion) => {
-        await knex("playlists_canciones").insert({
-          playlist_id: playlist[0].id,
-          cancion_id: cancion.id,
-        });
-      })
-    );
+    const relacionesCanciones = cancionesFiltradas.map((cancion) => ({
+      playlist_id: playlist[0].id,
+      cancion_id: cancion.id,
+    }));
+
+    await knex("playlists_canciones").insert(relacionesCanciones);
 
     return res.status(200).json({ mensaje: "Lista creada perfectamente" });
   } catch (error) {
