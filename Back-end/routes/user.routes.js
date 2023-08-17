@@ -5,6 +5,7 @@ const {
   traerArtistas,
   crearContextual,
   crearCupido,
+  traerPlaylists,
 } = require("../controller/user.controller");
 const userRoutes = express.Router();
 
@@ -22,5 +23,8 @@ userRoutes.post("/contextual", crearContextual);
 
 //crear playlist de contextual
 userRoutes.post("/cupido", crearCupido);
+
+//mostrar playlist por usuario
+userRoutes.get("/perfil", traerPlaylists);
 
 module.exports = userRoutes;
