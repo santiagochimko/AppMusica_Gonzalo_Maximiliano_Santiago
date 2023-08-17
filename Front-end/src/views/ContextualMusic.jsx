@@ -16,6 +16,11 @@ const ContextualMusic = () => {
   const [selectedGenreOptions, setSelectedGenreOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
 
+  const [playlistName, setPlaylistName] = useState("");
+  const [selectedOccasion, setSelectedOccasion] = useState("");
+  const [selectedMood, setSelectedMood] = useState("");
+  const [selectedWeather, setSelectedWeather] = useState("");
+
   useEffect(() => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -48,7 +53,7 @@ const ContextualMusic = () => {
       setSelectedGenreOptions((prevGenres) => [...prevGenres, genre]);
     }
   };
-
+  
   return (
     <main id="main-searcher">
       <div className="top-gradient"></div>
@@ -60,37 +65,43 @@ const ContextualMusic = () => {
       </div>
 
       <label htmlFor="">Nombre Playlist:</label>
-      <input type="text" name="" id="" />
+      <input
+      type="text"
+      name=""
+      id=""
+      value={playlistName}
+      onChange={(e) => setPlaylistName(e.target.value)}
+    />
 
       <label htmlFor="">¿Cual es la ocasión?:</label>
-      <select>
-        <option value="">Seleccionar...</option>
-        {occasionOptions.map((option, index) => (
-          <option key={`occasion-${index}`} value={option.id}>
-            {option.nombre}
-          </option>
-        ))}
-      </select>
+      <select value={selectedOccasion} onChange={(e) => setSelectedOccasion(e.target.value)}>
+      <option value="">Seleccionar...</option>
+      {occasionOptions.map((option, index) => (
+        <option key={`occasion-${index}`} value={option.id}>
+          {option.nombre}
+        </option>
+      ))}
+    </select>
 
       <label htmlFor="">¿Cómo te sientes?:</label>
-      <select>
-        <option value="">Seleccionar...</option>
-        {moodOptions.map((option, index) => (
-          <option key={`mood-${index}`} value={option.id}>
-            {option.nombre}
-          </option>
-        ))}
-      </select>
+      <select value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
+      <option value="">Seleccionar...</option>
+      {moodOptions.map((option, index) => (
+        <option key={`mood-${index}`} value={option.id}>
+          {option.nombre}
+        </option>
+      ))}
+    </select>
 
       <label htmlFor="">¿Cómo está el clima?:</label>
-      <select>
-        <option value="">Seleccionar...</option>
-        {weatherOptions.map((option, index) => (
-          <option key={`weather-${index}`} value={option.id}>
-            {option.nombre}
-          </option>
-        ))}
-      </select>
+      <select value={selectedWeather} onChange={(e) => setSelectedWeather(e.target.value)}>
+      <option value="">Seleccionar...</option>
+      {weatherOptions.map((option, index) => (
+        <option key={`weather-${index}`} value={option.id}>
+          {option.nombre}
+        </option>
+      ))}
+    </select>
 
       <section id="labels">
         <h1>Selecciona hasta 3 géneros:</h1>
