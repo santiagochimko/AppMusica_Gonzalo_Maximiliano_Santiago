@@ -8,34 +8,35 @@ import singer2 from "../assets/artist/2.png";
 import singer3 from "../assets/artist/3.png";
 import singer4 from "../assets/artist/4.png";
 
-const UserProfile = () => {  
+const UserProfile = () => {
+  const [profileData, setProfileData] = useState({    
+    playlists: []
+  });
 
-const [profileData, setProfileData] = useState({
-  name: "",
-  username: ""
-});
+  useEffect(() => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+      credentials: "include",
+    };
 
-useEffect(() => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  var requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-    credentials: "include",
-  };
+    fetch("http://localhost:3000/user/perfil", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        setProfileData(prevProfileData => ({
+          ...prevProfileData,
+          playlists: data.playlists
+        }));
+      })
+      .catch((error) => {
+        console.error("Error fetching filter options:", error);
+      });
+  }, []);
 
-  fetch("http://localhost:3000/user/perfil", requestOptions)
-    .then((response) => response.json())
-    .then((data) => {
-      setProfileData(data.playlists);    
-    })
-    .catch((error) => {
-      console.error("Error fetching filter options:", error);
-    });
-}, []);
-
-console.log(profileData);
+  console.log(profileData);
 
   return (
     <main id="main-searcher">
@@ -47,8 +48,9 @@ console.log(profileData);
             <img src={cogwheel} alt="icono configuracion" />
           </button>
         </div>
-        <h1></h1>
-        <h2>@</h2>
+        <h1>
+  {profileData.playlists.length > 0 ? profileData.playlists[0].usuario : ""}
+</h1>
       </header>
       <div className="dividerContainer">
         <h2>Mis Playlists</h2>
@@ -56,26 +58,18 @@ console.log(profileData);
         <button>Crear Playlist</button>
       </div>
       <section id="playlistContainer">
-        <article className="playlistCard">
-          <div className="sssinger">
-            <img src={singer} className="sssinger2" />
-            <img src={singer2} className="sssinger2" />
-            <img src={singer3} className="sssinger3" />
-            <img src={singer4} className="sssinger2" />
-          </div>
-          <h2 className=""></h2>
-          <h3 className=""></h3>
-        </article>
-        <article className="playlistCard">
-          <div className="sssinger">
-            <img src={singer} className="sssinger2" />
-            <img src={singer2} className="sssinger2" />
-            <img src={singer3} className="sssinger3" />
-            <img src={singer4} className="sssinger2" />
-          </div>
-          <h2 className=""></h2>
-          <h3 className=""></h3>
-        </article>
+      {profileData.playlists.map((profile, index) => (
+          <article className="playlistCard" key={index}>
+            <div className="sssinger">
+              <img src={singer} className="sssinger2" />
+              <img src={singer2} className="sssinger2" />
+              <img src={singer3} className="sssinger3" />
+              <img src={singer4} className="sssinger2" />
+            </div>
+            <h2 className="">{profile.nombre}</h2>
+            <h3 className="">{profile.usuario}</h3>
+          </article>
+        ))}       
       </section>
 
       <BottomBar />
