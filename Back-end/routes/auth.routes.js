@@ -8,8 +8,8 @@ const { logOut } = require("../controller/user.controller");
 //Login
 authroutes.post("/login", login);
 //register
-authroutes.post("/register", register);
-//  check, mensaje
+authroutes.post("/register", check, mensaje, register);
+ 
 authroutes.get("/logout", logOut);
 
 module.exports = authroutes;
