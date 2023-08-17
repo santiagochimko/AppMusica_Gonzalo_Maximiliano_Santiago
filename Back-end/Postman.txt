@@ -30,5 +30,6 @@
 //      "artistaID": [1,2,3,4]
 //  }
 
-
 /// TRAER PLAYLISTS (GET user/perfil)
+
+/// LOGOUT (GET user/logout)

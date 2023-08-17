@@ -129,3 +129,29 @@ exports.traerPlaylists = async (req, res) => {
     res.status(500).json({ error: "Hubo un error al obtener las playlists." });
   }
 };
+
+// exports.traerPlaylistsConCanciones = async (req, res) => {
+//   try {
+//     const usuarioID = req.usuario.id;
+
+//     const playlistsConCanciones = await knex("playlist_canciones as pc")
+//       .select("pc.cancion_id", "pc.playlist_id", "p.nombre as nombre_playlist")
+//       .leftJoin("playlists as p", "pc.playlist_id", "p.id")
+//       .where("p.usuario_id", usuarioID);
+
+//     res.status(200).json({ playlistsConCanciones });
+//   } catch (error) {
+//     res
+//       .status(500)
+//       .json({ error: "Hubo un error al obtener las playlists con canciones." });
+//   }
+// };
+
+exports.logOut = async (req, res) => {
+  try {
+    res.clearCookie("authToken");
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).json({ error: "Error al cerrar sesión" });
+  }
+};
