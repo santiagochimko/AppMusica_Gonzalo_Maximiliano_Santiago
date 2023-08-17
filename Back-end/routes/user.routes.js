@@ -29,8 +29,8 @@ userRoutes.post("/cupido", crearCupido);
 //mostrar playlist por usuario
 userRoutes.get("/perfil", traerPlaylists);
 
-//mostrar canciones de playlist
-userRoutes.get("/porcanciones", traerPlaylistsConCanciones);
+// //mostrar canciones de playlist
+// userRoutes.get("/porcanciones", traerPlaylistsConCanciones);
 
 //borrar token
 userRoutes.get("/logout", logOut);
