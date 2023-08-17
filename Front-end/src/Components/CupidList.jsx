@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import cross from "../assets/cross.svg";
 import like from "../assets/like.svg";
 import "../styles/CupidList.css";
+import { useNavigate } from 'react-router';
 
 const CupidList = () => {
+  const navigate = useNavigate();
   const [artists, setArtists] = useState([]);
   const [currentArtistIndex, setCurrentArtistIndex] = useState(0);
   const [rotationCompleted, setRotationCompleted] = useState(false);
@@ -46,6 +48,7 @@ const CupidList = () => {
   
       if (response.ok) {
         console.log("Playlist creada exitosamente");
+        navigate (`/user_profile`)
       } else {
         console.log("Error al crear:", responseData.error); // Cambia "error" por el campo correcto en la respuesta del servidor
       }
@@ -53,6 +56,8 @@ const CupidList = () => {
       console.log("Error:", error);
     }
   };
+
+  
 
   const handleLike = () => {
     if (currentArtistIndex === artists.length - 1) {
@@ -117,16 +122,14 @@ const CupidList = () => {
   return (
     
     <div className="cupid-card">
-        <img
-            src={new URL(
+        <img src={new URL(
             `../assets/artistas/${currentArtist.id}.jpg`,
             import.meta.url
             )}
             alt={currentArtist.nombre}
             className="singer"
         />
-        <img
-            src={new URL(
+        <img src={new URL(
             `../assets/artistas/${nextArtist.id}.jpg`,
             import.meta.url
             )}
@@ -158,7 +161,7 @@ const CupidList = () => {
         </div>
 
         <input type="text" placeholder="Nombre de la playlist" onChange={(e)=>{setListName(e.target.value)}}/>
-        <button onClick={handleCreatePlaylist}>
+        <button onClick={handleCreatePlaylist} className="playlist-button">
             Crear playlist
         </button>
     </div>
