@@ -1,0 +1,19 @@
+.ssinger {
+  height: 224px;
+  width: 224px;
+  border-radius: 0px 50px;
+  z-index: 1;
+  overflow: hidden;
+  gap: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.ssinger2 {
+  height: 112px;
+  width: 112px;
+}
+.ssinger3 {
+  height: 112px;
+  width: 112px;
+  overflow: hidden;
+}

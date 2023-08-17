@@ -1,6 +1,6 @@
 button {
     display: flex;
-    width: 320px;
+    width: 90%;
     padding: 12px 16px;
     justify-content: center;
     align-items: center;
@@ -10,5 +10,6 @@ button {
     font-size: 16px;
     font-weight: 600;
     background-color: transparent;
+    cursor: pointer;
 }
 

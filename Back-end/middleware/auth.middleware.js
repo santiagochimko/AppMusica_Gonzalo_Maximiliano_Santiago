@@ -3,7 +3,7 @@ const { secret } = require("../controller/auth.controller");
 
 exports.authMiddleWare = (req, res, next) => {
   const token = req.cookies.authToken;
-
+//console.log(token)
   if (!token) {
     return res.status(401).json({ mensajae: "Acceso denegado" });
   }
@@ -11,6 +11,7 @@ exports.authMiddleWare = (req, res, next) => {
   try {
     const payload = jwt.verify(token, secret);
     req.usuario = payload;
+    console.log(payload)
   } catch (e) {
     if (e.name === "JsonWebTokenError") {
       return res.status(401).json({ mensajae: "token invalido" });

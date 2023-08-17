@@ -1,0 +1,24 @@
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    width: 80%;
+}
+
+.top-bar img {
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+}
+
+.playlist-button {
+    background: var(--medios-tonos-gris-1, #E4E6E8);
+    color: white;
+    border: 0;
+    border-radius: 0px 16px;
+    position: absolute;
+    bottom: 20%;
+}
