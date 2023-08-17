@@ -58,7 +58,7 @@ exports.crearContextual = async (req, res) => {
 
     const cancionesFiltradas = await knex("canciones")
       .select("id")
-      .where("genero_id", generoID)
+      .whereIn("genero_id", generoID)
       .andWhere("estadodeanimo_id", estadoID)
       .andWhere("ocasion_id", ocasionID)
       .andWhere("clima_id", climaID);

@@ -54,6 +54,37 @@ const ContextualMusic = () => {
     }
   };
   
+  const handleCreatePlaylist = async () => {
+    try {
+      const userData = {
+        nombreLista: playlistName,
+        ocasionID: selectedOccasion,
+        estadoID:selectedMood,
+        climaID:selectedWeather,
+        generoID: selectedGenreOptions      
+      };
+  
+      const response = await fetch("http://localhost:3000/user/contextual", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include",
+      });
+  
+      const responseData = await response.json();
+  
+      if (response.ok) {
+        console.log("Playlist creada exitosamente");
+      } else {
+        console.log("Error al crear:", responseData.error); 
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
   return (
     <main id="main-searcher">
       <div className="top-gradient"></div>
@@ -125,7 +156,7 @@ const ContextualMusic = () => {
           ))}
         </div>
       </section>
-      <Button id="btnPlaylist" text="Crear Playlist" />
+      <Button id="btnPlaylist" text="Crear Playlist" onClick={handleCreatePlaylist}/>
     </main>
   );
 };
