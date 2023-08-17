@@ -18,7 +18,7 @@ userRoutes.get("/artistas", traerArtistas);
 //Traer filtros
 userRoutes.get("/filtros", traerFiltros);
 
-//crear playlist de filtros
+//crear playlist de cupido
 userRoutes.post("/contextual", crearContextual);
 
 //crear playlist de contextual
