@@ -45,8 +45,7 @@ const UserProfile = () => {
     fetch("http://localhost:3000/auth/logout", requestOptions)
       .then((response) => {
         if (response.ok) {
-          // Logout successful, manually redirect
-          window.location.href = "/"; // Redirect to the root URL
+          window.location.href = "/"; 
         } else {
           console.error("Logout failed");
         }
